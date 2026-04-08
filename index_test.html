@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The PDRN Selection - Busan Nampo-dong Pharmacy</title>
+    <style>
+        /* 논픽션 스타일의 우아한 세리프와 정갈한 산세리프 조합 */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@200;300;400;500;600&display=swap');
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #ffffff; 
+            padding: 80px 20px; 
+            color: #000; 
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 헤더 섹션 */
+        .title-section {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .title-section h2 { 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30px; 
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .title-section p {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #999;
+            margin-top: 12px;
+            text-transform: uppercase;
+        }
+        
+        .comparison-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 80px 40px; 
+            max-width: 1300px; 
+            margin: 0 auto; 
+        }
+
+        .product-card { 
+            background: white; 
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-card.basic-card:hover .img-wrapper { 
+            opacity: 0.7; 
+        }
+
+        .img-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #f8f8f8; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 22px;
+            position: relative;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .img-wrapper:hover {
+            opacity: 0.7;
+        }
+
+        .product-img { 
+            width: 80%; 
+            height: 80%; 
+            object-fit: contain; 
+            transition: opacity 0.3s ease;
+        }
+
+        .badge { 
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 10px; 
+            letter-spacing: 1px;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        .product-main-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 4px;
+        }
+
+        .product-name { 
+            font-size: 14px; 
+            font-weight: 500; 
+            line-height: 1.5;
+            margin: 0;
+            padding-right: 20px;
+            flex: 1;
+        }
+
+        .price-box {
+            font-size: 13px;
+            font-weight: 500;
+            color: #000;
+            white-space: nowrap;
+            text-align: right;
+            transition: opacity 0.3s ease;
+        }
+
+        .tag { 
+            font-size: 12px; 
+            color: #888; 
+            font-weight: 300;
+            margin-top: 2px;
+            margin-bottom: 15px;
+        }
+
+        .volume-selector {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .volume-btn {
+            background: none;
+            border: 1px solid #ddd;
+            color: #666;
+            padding: 8px 16px;
+            font-size: 11px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .volume-btn:hover {
+            border-color: #000;
+            color: #000;
+        }
+
+        /* 활성화된 버튼 스타일 고정 */
+        .volume-btn.active {
+            border-color: #000 !important;
+            color: #fff !important;
+            background-color: #000 !important;
+            font-weight: 500;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 150px;
+            font-size: 11px;
+            color: #bbb;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+<div class="title-section">
+    <h2>The PDRN Selection</h2>
+    <p>Professional Recovery Protocol</p>
+</div>
+
+<div class="comparison-container">
+    <div class="product-card basic-card">
+        <a href="rejuvenex.html" class="img-wrapper">
+            <div class="badge">Original</div>
+            <img src="rejuvenex.png" alt="Rejuvenex Cream" class="product-img">
+        </a>
+        <div class="product-main-info">
+            <div class="product-name">Rejuvenex Cream</div>
+            <div class="price-box">KRW 39,000</div>
+        </div>
+        <div class="tag">Classic Regeneration</div>
+    </div>
+
+    <div class="product-card multi-volume-card" id="card-rejuall">
+        <a href="rejuall_30ml_detail.html" class="img-wrapper" id="link-rejuall">
+            <div class="badge">Advanced</div>
+            <img src="rejuall30.png" alt="Dr. Reju-All 30ml" class="product-img" id="img-rejuall">
+        </a>
+        <div class="product-main-info">
+            <div class="product-name">Dr. Reju-All Advanced PDRN Rejuvenating Cream</div>
+            <div class="price-box" id="price-rejuall">KRW 45,000</div>
+        </div>
+        <div class="tag">Total Anti-Aging Care</div>
+        <div class="volume-selector">
+            <button class="volume-btn active" onclick="changeVolume('rejuall', '30ml', 'KRW 45,000', 'rejuall30.png', 'rejuall_30ml_detail.html')">30ml</button>
+            <button class="volume-btn" onclick="changeVolume('rejuall', '60ml', 'KRW 80,000', 'rejuall60.png', 'rejuall_60ml_detail.html')">60ml</button>
+        </div>
+    </div>
+
+    <div class="product-card basic-card">
+        <a href="reju_de_vie_detail.html" class="img-wrapper">
+            <div class="badge">Premium</div>
+            <img src="reju_de_vie.png" alt="Reju de Vie Cream" class="product-img">
+        </a>
+        <div class="product-main-info">
+            <div class="product-name">Reju de Vie Cream</div>
+            <div class="price-box">KRW 35,000</div>
+        </div>
+        <div class="tag">Elasticity & Radiance</div>
+    </div>
+
+    <div class="product-card basic-card">
+        <a href="rejuveon_detail.html" class="img-wrapper">
+            <div class="badge">Trending</div>
+            <img src="rejuveon.png" alt="Rejuveon Cream" class="product-img">
+        </a>
+        <div class="product-main-info">
+            <div class="product-name">Rejuveon Cream</div>
+            <div class="price-box">KRW 29,000</div>
+        </div>
+        <div class="tag">Moisture Barrier</div>
+    </div>
+
+    <div class="product-card basic-card">
+        <a href="rejuchiol_detail.html" class="img-wrapper">
+            <div class="badge">New</div>
+            <img src="rejuchiol.png" alt="Rejuchiol Cream" class="product-img">
+        </a>
+        <div class="product-main-info">
+            <div class="product-name">Rejuchiol Cream</div>
+            <div class="price-box">KRW 29,000</div>
+        </div>
+        <div class="tag">PDRN + Bakuchiol</div>
+    </div>
+
+    <div class="product-card basic-card">
+        <a href="pharmacian_detail.html" class="img-wrapper">
+            <div class="badge">Pharmacist Choice</div>
+            <img src="pharmacian.png" alt="VCXO Pharmacian PDRN 7000 Cream" class="product-img">
+        </a>
+        <div class="product-main-info">
+            <div class="product-name">VCXO Pharmacian PDRN 7000 Cream</div>
+            <div class="price-box">KRW 35,000</div>
+        </div>
+        <div class="tag">High Potency Recovery</div>
+    </div>
+
+    <div class="product-card multi-volume-card" id="card-rejupd">
+        <a href="drrejupd_30ml_detail.html" class="img-wrapper" id="link-rejupd">
+            <div class="badge">Dermatology</div>
+            <img src="drrejupd.png" alt="Dr. REJUPD PDRN Cream 30ml" class="product-img" id="img-rejupd">
+        </a>
+        <div class="product-main-info">
+            <div class="product-name">Dr. REJUPD PDRN Cream</div>
+            <div class="price-box" id="price-rejupd">KRW 35,000</div>
+        </div>
+        <div class="tag">Post-Treatment Care</div>
+        <div class="volume-selector">
+            <button class="volume-btn active" onclick="changeVolume('rejupd', '30ml', 'KRW 35,000', 'drrejupd.png', 'drrejupd_30ml_detail.html')">30ml</button>
+            <button class="volume-btn" onclick="changeVolume('rejupd', '60ml', 'KRW 45,000', 'drrejupd.png', 'drrejupd_60ml_detail.html')">60ml</button>
+        </div>
+    </div>
+
+    <div class="product-card basic-card">
+        <a href="rejuyoung_detail.html" class="img-wrapper">
+            <div class="badge">Intense</div>
+            <img src="rejuyoung.png" alt="Rejuyoung PDRN 10000 Cream" class="product-img">
+        </a>
+        <div class="product-main-info">
+            <div class="product-name">Rejuyoung PDRN 10000 Cream</div>
+            <div class="price-box">KRW 45,000</div>
+        </div>
+        <div class="tag">Maximum Strength Recovery</div>
+    </div>
+
+    <div class="product-card basic-card">
+        <a href="rejuvuster_detail.html" class="img-wrapper">
+            <div class="badge">Booster</div>
+            <img src="rejuvuster.jpg" alt="REJUVUSTER PDRN Rejuvenating Cream" class="product-img">
+        </a>
+        <div class="product-main-info">
+            <div class="product-name">REJUVUSTER PDRN Rejuvenating Cream</div>
+            <div class="price-box">KRW 45,000</div>
+        </div>
+        <div class="tag">Texture Improvement</div>
+    </div>
+</div>
+
+<div class="footer-note">
+    Professional Pharmacy Service in Busan — Nampo-dong
+</div>
+
+<script>
+    function changeVolume(productId, volume, priceKRW, imgName, detailUrl) {
+        var card = document.getElementById('card-' + productId);
+        var priceElement = document.getElementById('price-' + productId);
+        var imgElement = document.getElementById('img-' + productId);
+        var linkElement = document.getElementById('link-' + productId);
+
+        // 1. 정보 업데이트
+        priceElement.innerText = priceKRW;
+        imgElement.src = imgName;
+        if(linkElement) linkElement.href = detailUrl;
+        imgElement.alt = "Dr. PDRN Cream " + volume;
+
+        // 2. 버튼 상태 업데이트 (이 부분이 핵심!)
+        var buttons = card.querySelectorAll('.volume-btn');
+        buttons.forEach(function(btn) {
+            // 버튼의 텍스트가 클릭한 용량과 같으면 active 추가, 아니면 제거
+            if (btn.innerText.trim() === volume) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
