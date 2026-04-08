@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REJUVENEX PDRN Cream</title>
+<style>
+    *{
+        box-sizing:border-box;
+    }
+
+    body{
+        margin:0;
+        background:#efefef;
+        color:#111;
+        font-family: "PingFang TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    img{
+        max-width:100%;
+        height:auto;
+    }
+
+    .container{ max-width:900px; margin:auto; }
+    .product-image{ width:100%; }
+    .product-image img{ width:100%; display:block; }
+
+    .content{ padding:80px 60px; }
+
+    .title{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:72px;
+        font-weight:300;
+        letter-spacing:-2px;
+        line-height:0.95;
+    }
+
+    .subtitle{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:42px;
+        margin-bottom:18px;
+        font-weight:300;
+        line-height:1.25;
+    }
+
+    /* 언어 스위치 */
+    .lang-switch{
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        gap:8px;
+        flex-wrap:wrap;
+        margin-bottom:32px;
+    }
+
+    .lang-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        color:#666;
+        font-size:12px;
+        letter-spacing:0.1em;
+        text-transform:uppercase;
+        cursor:pointer;
+        padding:6px 12px;
+        transition:all 0.25s ease;
+    }
+
+    .lang-btn:hover{
+        border-color:#111;
+        color:#111;
+    }
+
+    .lang-btn.active{
+        background:#111;
+        color:#fff;
+        border-color:#111;
+        font-weight:500;
+    }
+
+    /* 통화 선택 섹션 */
+    .currency-section{
+        margin-bottom:60px;
+        text-align:right;
+    }
+
+    .currency-tabs{
+        display:flex;
+        justify-content:flex-end;
+        gap:12px;
+        margin-bottom:12px;
+        flex-wrap:wrap;
+    }
+
+    .curr-tab{
+        border:none;
+        background:none;
+        font-size:13px;
+        color:#999;
+        cursor:pointer;
+        padding:0;
+        letter-spacing:0.05em;
+        transition:color 0.2s;
+        position:relative;
+    }
+
+    .curr-tab.active{
+        color:#111;
+        font-weight:600;
+    }
+
+    .curr-tab.active::after{
+        content:"";
+        display:block;
+        width:100%;
+        height:1px;
+        background:#111;
+        margin-top:2px;
+    }
+
+    .price-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:baseline;
+        gap:12px;
+    }
+
+    .price-main{
+        font-size:38px;
+        font-weight:500;
+        letter-spacing:-0.5px;
+    }
+
+    .price-sub{
+        font-size:18px;
+        color:#888;
+        text-decoration: line-through;
+    }
+
+    .status-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        gap:10px;
+        margin-top:8px;
+    }
+
+    .status{
+        font-size:12px;
+        color:#aaa;
+    }
+
+    .currency-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        padding:4px 10px;
+        cursor:pointer;
+        font-size:11px;
+        text-transform:uppercase;
+    }
+
+    /* 언어별 패널 */
+    .lang-panel{ display:none; }
+    .lang-panel.active{ display:block; }
+
+    .text{
+        font-size:26px;
+        line-height:1.9;
+        margin-bottom:34px;
+        font-weight:300;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+    }
+
+    .section-title{
+        font-size:30px;
+        font-weight:700;
+        line-height:1.4;
+        margin:56px 0 18px 0;
+        letter-spacing:-0.01em;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+    }
+
+    .notes{
+        font-size:24px;
+        letter-spacing:1px;
+        text-transform:uppercase;
+        color:#444;
+        margin-top:6px;
+        margin-bottom:10px;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+    }
+
+    @media (max-width:768px){
+        .container{
+            max-width:100%;
+        }
+
+        .content{
+            padding:36px 20px;
+        }
+
+        .title{
+            font-size:42px;
+            letter-spacing:-1px;
+            word-break:break-word;
+        }
+
+        .subtitle{
+            font-size:24px;
+            line-height:1.3;
+            margin-bottom:16px;
+        }
+
+        .lang-switch{
+            gap:6px;
+            margin-bottom:24px;
+        }
+
+        .lang-btn{
+            font-size:11px;
+            padding:6px 10px;
+        }
+
+        .currency-tabs{
+            gap:10px;
+            row-gap:6px;
+        }
+
+        .price-row{
+            flex-direction:column;
+            align-items:flex-end;
+            gap:4px;
+        }
+
+        .price-main{
+            font-size:26px;
+            text-align:right;
+        }
+
+        .price-sub{
+            font-size:13px;
+        }
+
+        .status-row{
+            flex-wrap:wrap;
+            justify-content:flex-end;
+            gap:8px;
+        }
+
+        .status{
+            font-size:11px;
+            text-align:right;
+        }
+
+        .currency-btn{
+            font-size:10px;
+            padding:4px 8px;
+        }
+
+        .text{
+            font-size:17px;
+            line-height:1.8;
+            margin-bottom:22px;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+        }
+
+        .section-title{
+            font-size:21px;
+            margin:34px 0 12px 0;
+            line-height:1.35;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+        }
+
+        .notes{
+            font-size:15px;
+            line-height:1.6;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="product-image">
+        <img src="rejuvenex.png" alt="Rejuvenex Cream">
+    </div>
+
+    <div class="content">
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="ko" onclick="switchLanguage('ko')">KR</button>
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="zh-Hant" onclick="switchLanguage('zh-Hant')">繁中</button>
+            <button class="lang-btn" data-lang="zh-Hans" onclick="switchLanguage('zh-Hans')">简中</button>
+            <button class="lang-btn" data-lang="ja" onclick="switchLanguage('ja')">日本語</button>
+        </div>
+
+        <div class="title">REJUVENEX</div>
+        <div class="subtitle" id="subtitle">PDRN 재생 크림</div>
+
+        <div class="currency-section">
+            <div class="currency-tabs">
+                <button class="curr-tab active" data-curr="KRW" onclick="changeCurrency('KRW')">KRW</button>
+                <button class="curr-tab" data-curr="USD" onclick="changeCurrency('USD')">USD</button>
+                <button class="curr-tab" data-curr="TWD" onclick="changeCurrency('TWD')">TWD</button>
+                <button class="curr-tab" data-curr="CNY" onclick="changeCurrency('CNY')">CNY</button>
+                <button class="curr-tab" data-curr="JPY" onclick="changeCurrency('JPY')">JPY</button>
+                <button class="curr-tab" data-curr="EUR" onclick="changeCurrency('EUR')">EUR</button>
+            </div>
+            <div class="price-row">
+                <div class="price-sub" id="subPrice"></div>
+                <div class="price-main" id="mainPrice">₩45,000</div>
+            </div>
+            <div class="status-row">
+                <div class="status" id="rateStatus">Loading rates...</div>
+                <button class="currency-btn" id="refreshBtn" onclick="loadExchangeRates()">Refresh</button>
+            </div>
+        </div>
+
+        <!-- 한국어 -->
+        <div class="lang-panel active" data-lang="ko">
+            <div class="text">
+                피부 깊은 곳에서 조용한 재생이 시작됩니다.<br>
+                DOT® PDRN의 섬세한 흐름과 밀도 있는 크림 텍스처가 만나,<br>
+                진정과 회복이 필요한 피부에 차분한 위로를 전합니다.
+            </div>
+
+            <div class="text">
+                REJUVENEX는 DOT® PDRN 800 ppm을 중심으로 피부 본연의 회복 과정을 돕습니다.<br>
+                VEGF, EGF, IGF 등 주요 성장인자의 분비를 촉진하여 손상된 피부가 균형을 되찾도록 돕고,<br>
+                약해진 장벽을 탄탄하게 가꿔 탄력과 영양을 부드럽게 채워줍니다.
+            </div>
+
+            <div class="text">
+                피부과 시술 후처럼 피부가 예민하고 편안한 보호가 필요한 순간,<br>
+                리치한 크림이 재생이 필요한 부위에 부드럽게 밀착되어<br>
+                매일의 케어를 조용한 회복의 루틴으로 바꾸어줍니다.
+            </div>
+
+            <div class="notes">PDRN | 피부 재생 | 장벽 강화 | 탄력 케어</div>
+
+            <div class="section-title">│ DOT® PDRN</div>
+            <div class="text">
+                DOT®는 DNA Fragments Optimizing Technology의 약자로,
+                DNA 혼합 분획 제품화 기술을 의미합니다.<br>
+                특허 받은 DOT 기술을 활용하여 파마리서치만의
+                DNA 단편 혼합물 제조 및 제품화가 가능합니다.
+            </div>
+
+            <div class="section-title">│ 일반의약품(OTC)</div>
+            <div class="text">
+                Rejuvenex 크림은 일반적인 PDRN 화장품과 달리,
+                일반의약품(OTC)으로 허가된 재생 크림입니다.
+            </div>
+
+            <div class="section-title">│ Usage Tips</div>
+            <div class="text">
+                환부에 1일 1~2회 적당량을 도포합니다.<br>
+                일반적인 기초화장품처럼 넓은 부위에 매일 화장품 대용으로 사용하는 것보다는
+                피부 재생이 필요한 부위 위주로 바르는 것이 좋습니다.
+            </div>
+        </div>
+
+        <!-- 영어 -->
+        <div class="lang-panel" data-lang="en">
+            <div class="text">
+                Quiet renewal begins beneath the skin.<br>
+                A refined flow of DOT® PDRN and a dense cream texture<br>
+                come together for moments when the skin longs for calm and recovery.
+            </div>
+
+            <div class="text">
+                Guided by DOT® PDRN 800 ppm, REJUVENEX supports the skin’s natural recovery process.<br>
+                By encouraging the release of key growth factors such as VEGF, EGF, and IGF,<br>
+                it helps damaged skin return to balance while restoring nourishment and resilience.
+            </div>
+
+            <div class="text">
+                After dermatological treatments, when skin feels delicate and in need of comfort,<br>
+                the rich cream settles softly over targeted areas,<br>
+                turning a moment of care into a quiet ritual of recovery.
+            </div>
+
+            <div class="notes">PDRN | Skin Regeneration | Barrier Care | Elasticity</div>
+
+            <div class="section-title">│ DOT® PDRN</div>
+            <div class="text">
+                DOT® refers to DNA Fragments Optimizing Technology,
+                a proprietary platform for optimizing and formulating DNA fractions.<br>
+                Through this patented technology, Pharmaresearch develops
+                its own refined mixture of DNA fragments for tissue recovery support.
+            </div>
+
+            <div class="section-title">│ OTC</div>
+            <div class="text">
+                Unlike many cosmetic PDRN creams, Rejuvenex is approved
+                as an OTC pharmaceutical regenerative cream.
+            </div>
+
+            <div class="section-title">│ Usage Tips</div>
+            <div class="text">
+                Apply a moderate amount to the affected area once or twice daily.<br>
+                Rather than using it broadly like a daily moisturizer,
+                it is best applied to areas where skin regeneration is especially needed.
+            </div>
+        </div>
+
+        <!-- 번체 -->
+        <div class="lang-panel" data-lang="zh-Hant">
+            <div class="text">
+                寧靜的修復，從肌膚深處輕柔啟動。<br>
+                DOT® PDRN 的細膩流動，伴隨密實而溫潤的質地，<br>
+                為渴望安定與甦醒的肌膚，奉上最純粹的療癒時光。
+            </div>
+
+            <div class="text">
+                REJUVENEX 以 DOT® PDRN (800 ppm) 為核心，<br>
+                精準喚醒肌膚原有的修復本能。透過促進多種生長因子(VEGF, EGF, IGF)的釋放,<br>
+                溫柔撫平受損痕跡。隨著脆弱屏障逐漸變得堅韌，<br>
+                失去的彈力與養分也將在靜謐中重獲充盈。
+            </div>
+
+            <div class="text">
+                在醫美療程後，當肌膚最需呵護的時刻，<br>
+                輕輕抹開這份厚實的霜狀質地，讓修復不再只是保養，<br>
+                而是一場沉浸於寧靜中的回歸儀式。
+            </div>
+
+            <div class="notes">PDRN | 肌底再生 | 屏障強化 | 賦活彈力</div>
+
+            <div class="section-title">│ DOT® PDRN</div>
+            <div class="text">
+                DOT® 是 DNA Fragments Optimizing Technology 的縮寫，
+                為 DNA 混合分劃產品化技術。<br>
+                透過此專利技術，Pharmaresearch 能夠製造
+                品牌專屬的 DNA 片段混合物並完成產品化。
+            </div>
+
+            <div class="section-title">│ 一般醫藥品(OTC)</div>
+            <div class="text">
+                與一般 PDRN 保養霜不同，
+                Rejuvenex 屬於核准的一般醫藥品(OTC)再生修護霜。
+            </div>
+
+            <div class="section-title">│ Usage Tips</div>
+            <div class="text">
+                每日於患部塗抹 1～2 次適量。<br>
+                比起像一般基礎保養品一樣大範圍天天使用，
+                更建議集中塗抹於需要肌膚修復的部位。
+            </div>
+        </div>
+
+        <!-- 간체 -->
+        <div class="lang-panel" data-lang="zh-Hans">
+            <div class="text">
+                宁静修护，自肌肤深处轻柔启程。<br>
+                DOT® PDRN 的细腻流动，伴随丰润而柔和的质地，<br>
+                为渴望安定与苏醒的肌肤，献上纯粹而温柔的疗愈时刻。
+            </div>
+
+            <div class="text">
+                REJUVENEX 以 DOT® PDRN(800 ppm)为核心，<br>
+                细致唤醒肌肤原有的修护本能。通过促进多种生长因子(VEGF, EGF, IGF)的释放，<br>
+                温柔抚平受损痕迹。随着脆弱屏障逐渐变得强韧，<br>
+                流失的弹力与养分也将在宁静中重新丰盈。
+            </div>
+
+            <div class="text">
+                尤其在医美疗程后、肌肤最需要呵护的时刻，<br>
+                轻轻抹开这份厚实细腻的霜状质地，让修护不再只是日常护理，<br>
+                而是一场沉浸于宁静之中的回归仪式。
+            </div>
+
+            <div class="notes">PDRN | 肌底再生 | 屏障修护 | 弹力焕活</div>
+
+            <div class="section-title">│ DOT® PDRN</div>
+            <div class="text">
+                DOT® 是 DNA Fragments Optimizing Technology 的缩写，
+                指 DNA 混合分段产品化技术。<br>
+                通过这项专利技术，Pharmaresearch 可生产
+                品牌专属的 DNA 片段混合物并完成产品化。
+            </div>
+
+            <div class="section-title">│ 非处方药（OTC）</div>
+            <div class="text">
+                与一般 PDRN 护肤产品不同，
+                Rejuvenex 属于获批的非处方药（OTC）再生修护霜。
+            </div>
+
+            <div class="section-title">│ Usage Tips</div>
+            <div class="text">
+                每日于患处涂抹 1～2 次适量。<br>
+                与其像普通基础护肤品一样大面积天天使用，
+                更建议集中用于需要肌肤修复的部位。
+            </div>
+        </div>
+
+        <!-- 일본어 -->
+        <div class="lang-panel" data-lang="ja">
+            <div class="text">
+                肌の奥から、静かなリカバリーがやさしく始まります。<br>
+                DOT® PDRNの繊細なアプローチと、濃密でなめらかなクリームテクスチャーが重なり、<br>
+                安らぎと目覚めを求める肌へ、穏やかなケアの時間を届けます。
+            </div>
+
+            <div class="text">
+                REJUVENEXは DOT® PDRN(800 ppm)を中心に、<br>
+                肌本来の回復リズムを丁寧にサポートします。VEGF、EGF、IGFなどの成長因子の分泌を促し、<br>
+                ダメージを受けた肌をやさしく整えながら、<br>
+                揺らぎやすいバリア機能にうるおいとハリを取り戻します。
+            </div>
+
+            <div class="text">
+                美容施術後など、肌がとくにいたわりを必要とする瞬間にも、<br>
+                コクのあるクリームが必要な部分にやさしく密着し、<br>
+                毎日のケアを静かな回復のルーティンへと導きます。
+            </div>
+
+            <div class="notes">PDRN | 肌再生 | バリアケア | ハリ弾力</div>
+
+            <div class="section-title">│ DOT® PDRN</div>
+            <div class="text">
+                DOT® は DNA Fragments Optimizing Technology の略で、
+                DNA混合分画を製品化するための独自技術です。<br>
+                この特許技術により、Pharmaresearch 独自の
+                DNAフラグメント混合物の製造と製品化が可能になります。
+            </div>
+
+            <div class="section-title">│ OTC医薬品</div>
+            <div class="text">
+                一般的なPDRN配合コスメとは異なり、
+                Rejuvenex は一般用医薬品（OTC）として承認された再生クリームです。
+            </div>
+
+            <div class="section-title">│ Usage Tips</div>
+            <div class="text">
+                1日1〜2回、適量を患部に塗布してください。<br>
+                通常のスキンケアのように広範囲へ毎日使うよりも、
+                肌再生が必要な部分に集中して使うのがおすすめです。
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const basePriceKRW = 45000;
+let currentLang = "ko";
+let currentCurrency = "KRW";
+let exchangeRates = {};
+
+const languageMap = {
+    "ko": {
+        subtitle: "PDRN 재생 크림",
+        refresh: "새로고침",
+        loading: "환율 정보를 가져오는 중...",
+        updated: "실시간 환율 업데이트 완료",
+        failed: "환율 정보를 불러올 수 없습니다."
+    },
+    "en": {
+        subtitle: "PDRN Regenerative Cream",
+        refresh: "Refresh",
+        loading: "Loading rates...",
+        updated: "Live exchange rate updated",
+        failed: "Could not load exchange rate."
+    },
+    "zh-Hant": {
+        subtitle: "PDRN 修護再生霜",
+        refresh: "重新整理",
+        loading: "匯率載入中...",
+        updated: "實時匯率更新完成",
+        failed: "無法載入匯率。"
+    },
+    "zh-Hans": {
+        subtitle: "PDRN 修护再生霜",
+        refresh: "刷新",
+        loading: "汇率加载中...",
+        updated: "实时汇率更新完成",
+        failed: "无法加载汇率。"
+    },
+    "ja": {
+        subtitle: "PDRN 再生クリーム",
+        refresh: "更新",
+        loading: "読み込み中...",
+        updated: "リアルタイムレート更新完了",
+        failed: "レート取得失敗"
+    }
+};
+
+const currencySymbols = {
+    "KRW": "₩",
+    "USD": "$",
+    "TWD": "$",
+    "CNY": "¥",
+    "JPY": "¥",
+    "EUR": "€"
+};
+
+async function loadExchangeRates() {
+    const status = document.getElementById("rateStatus");
+    const refreshBtn = document.getElementById("refreshBtn");
+
+    try {
+        refreshBtn.disabled = true;
+        status.innerText = languageMap[currentLang].loading;
+
+        const response = await fetch('https://open.er-api.com/v6/latest/KRW');
+        if (!response.ok) throw new Error();
+
+        const data = await response.json();
+        exchangeRates = data.rates;
+
+        status.innerText = `${languageMap[currentLang].updated}`;
+        updatePriceDisplay();
+    } catch (e) {
+        status.innerText = languageMap[currentLang].failed;
+    } finally {
+        refreshBtn.disabled = false;
+    }
+}
+
+function updatePriceDisplay() {
+    const mainPrice = document.getElementById("mainPrice");
+    const subPrice = document.getElementById("subPrice");
+
+    if (currentCurrency === "KRW") {
+        mainPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+        subPrice.innerText = "";
+        return;
+    }
+
+    if (exchangeRates[currentCurrency]) {
+        const rate = exchangeRates[currentCurrency];
+        const decimalPoint = (currentCurrency === 'USD' || currentCurrency === 'EUR') ? 2 : 0;
+        const converted = (basePriceKRW * rate).toFixed(decimalPoint);
+
+        mainPrice.innerText = `${currentCurrency} ${currencySymbols[currentCurrency]}${Number(converted).toLocaleString(undefined, {minimumFractionDigits: decimalPoint})}`;
+        subPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+    }
+}
+
+function changeCurrency(curr) {
+    currentCurrency = curr;
+    document.querySelectorAll(".curr-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.getAttribute('data-curr') === curr);
+    });
+    updatePriceDisplay();
+}
+
+function switchLanguage(lang){
+    currentLang = lang;
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+
+    document.querySelectorAll(".lang-panel").forEach(panel => {
+        panel.classList.toggle("active", panel.dataset.lang === lang);
+    });
+
+    document.getElementById("subtitle").innerText = languageMap[lang].subtitle;
+    document.getElementById("refreshBtn").innerText = languageMap[lang].refresh;
+
+    const status = document.getElementById("rateStatus");
+    if(
+        status.innerText.includes("완료") ||
+        status.innerText.includes("updated") ||
+        status.innerText.includes("更新") ||
+        status.innerText.includes("完了")
+    ){
+        status.innerText = languageMap[lang].updated;
+    }
+}
+
+switchLanguage("ko");
+loadExchangeRates();
+</script>
+</body>
+</html>
