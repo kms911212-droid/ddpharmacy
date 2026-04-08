@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REJUVUSTER PDRN Rejuvenating Cream</title>
+<style>
+    *{ box-sizing:border-box; }
+
+    body{
+        margin:0;
+        background:#efefef;
+        color:#111;
+        font-family: "PingFang TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    img{
+        max-width:100%;
+        height:auto;
+    }
+
+    .container{ max-width:900px; margin:auto; }
+    .product-image{ width:100%; }
+    .product-image img{ width:100%; display:block; }
+
+    .content{ padding:80px 60px; }
+
+    .title{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:72px;
+        font-weight:300;
+        letter-spacing:-2px;
+        line-height:0.95;
+    }
+
+    .subtitle{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:42px;
+        margin-bottom:18px;
+        font-weight:300;
+        line-height:1.25;
+    }
+
+    .lang-switch{
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        gap:8px;
+        flex-wrap:wrap;
+        margin-bottom:32px;
+    }
+
+    .lang-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        color:#666;
+        font-size:12px;
+        letter-spacing:0.1em;
+        text-transform:uppercase;
+        cursor:pointer;
+        padding:6px 12px;
+        transition:all 0.25s ease;
+    }
+
+    .lang-btn:hover{
+        border-color:#111;
+        color:#111;
+    }
+
+    .lang-btn.active{
+        background:#111;
+        color:#fff;
+        border-color:#111;
+        font-weight:500;
+    }
+
+    .currency-section{
+        margin-bottom:60px;
+        text-align:right;
+    }
+
+    .currency-tabs{
+        display:flex;
+        justify-content:flex-end;
+        gap:12px;
+        margin-bottom:12px;
+        flex-wrap:wrap;
+    }
+
+    .curr-tab{
+        border:none;
+        background:none;
+        font-size:13px;
+        color:#999;
+        cursor:pointer;
+        padding:0;
+        letter-spacing:0.05em;
+        transition:color 0.2s;
+        position:relative;
+    }
+
+    .curr-tab.active{
+        color:#111;
+        font-weight:600;
+    }
+
+    .curr-tab.active::after{
+        content:"";
+        display:block;
+        width:100%;
+        height:1px;
+        background:#111;
+        margin-top:2px;
+    }
+
+    .price-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:baseline;
+        gap:12px;
+    }
+
+    .price-main{
+        font-size:38px;
+        font-weight:500;
+        letter-spacing:-0.5px;
+    }
+
+    .price-sub{
+        font-size:18px;
+        color:#888;
+        text-decoration: line-through;
+    }
+
+    .status-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        gap:10px;
+        margin-top:8px;
+    }
+
+    .status{
+        font-size:12px;
+        color:#aaa;
+    }
+
+    .currency-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        padding:4px 10px;
+        cursor:pointer;
+        font-size:11px;
+        text-transform:uppercase;
+    }
+
+    .lang-panel{ display:none; }
+    .lang-panel.active{ display:block; }
+
+    .text{
+        font-size:26px;
+        line-height:1.9;
+        margin-bottom:34px;
+        font-weight:300;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+        max-width:640px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:left;
+    }
+
+    .section-title{
+        font-size:30px;
+        font-weight:700;
+        line-height:1.4;
+        margin:56px 0 18px 0;
+        letter-spacing:-0.01em;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+        max-width:640px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:left;
+    }
+
+    @media (max-width:768px){
+        .container{ max-width:100%; }
+        .content{ padding:36px 20px; }
+
+        .title{
+            font-size:42px;
+            letter-spacing:-1px;
+            word-break:break-word;
+        }
+
+        .subtitle{
+            font-size:24px;
+            line-height:1.3;
+            margin-bottom:16px;
+        }
+
+        .lang-switch{
+            gap:6px;
+            margin-bottom:24px;
+        }
+
+        .lang-btn{
+            font-size:11px;
+            padding:6px 10px;
+        }
+
+        .currency-tabs{
+            gap:10px;
+            row-gap:6px;
+        }
+
+        .price-row{
+            flex-direction:column;
+            align-items:flex-end;
+            gap:4px;
+        }
+
+        .price-main{
+            font-size:26px;
+            text-align:right;
+        }
+
+        .price-sub{ font-size:13px; }
+
+        .status-row{
+            flex-wrap:wrap;
+            justify-content:flex-end;
+            gap:8px;
+        }
+
+        .status{
+            font-size:11px;
+            text-align:right;
+        }
+
+        .currency-btn{
+            font-size:10px;
+            padding:4px 8px;
+        }
+
+        .text{
+            font-size:17px;
+            line-height:1.8;
+            margin-bottom:22px;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+            max-width:640px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:left;
+        }
+
+        .section-title{
+            font-size:21px;
+            margin:34px 0 12px 0;
+            line-height:1.35;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+            max-width:640px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:left;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="product-image">
+        <img src="rejuvuster.jpg" alt="REJUVUSTER PDRN Rejuvenating Cream">
+    </div>
+
+    <div class="content">
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="ko" onclick="switchLanguage('ko')">KR</button>
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="zh-Hant" onclick="switchLanguage('zh-Hant')">繁中</button>
+            <button class="lang-btn" data-lang="zh-Hans" onclick="switchLanguage('zh-Hans')">简中</button>
+            <button class="lang-btn" data-lang="ja" onclick="switchLanguage('ja')">日本語</button>
+        </div>
+
+        <div class="title">REJUVUSTER</div>
+        <div class="subtitle" id="subtitle">PDRN Rejuvenating Cream</div>
+
+        <div class="currency-section">
+            <div class="currency-tabs">
+                <button class="curr-tab active" data-curr="KRW" onclick="changeCurrency('KRW')">KRW</button>
+                <button class="curr-tab" data-curr="USD" onclick="changeCurrency('USD')">USD</button>
+                <button class="curr-tab" data-curr="TWD" onclick="changeCurrency('TWD')">TWD</button>
+                <button class="curr-tab" data-curr="CNY" onclick="changeCurrency('CNY')">CNY</button>
+                <button class="curr-tab" data-curr="JPY" onclick="changeCurrency('JPY')">JPY</button>
+                <button class="curr-tab" data-curr="EUR" onclick="changeCurrency('EUR')">EUR</button>
+            </div>
+            <div class="price-row">
+                <div class="price-sub" id="subPrice"></div>
+                <div class="price-main" id="mainPrice">₩0</div>
+            </div>
+            <div class="status-row">
+                <div class="status" id="rateStatus">Loading rates...</div>
+                <button class="currency-btn" id="refreshBtn" onclick="loadExchangeRates()">Refresh</button>
+            </div>
+        </div>
+
+
+        
+        
+        <div class="lang-panel active" data-lang="ko">
+            <div class="section-title">REJUVUSTER PDRN Rejuvenating Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">│ 제품 설명</div>
+            <div class="text"><b>REJUVUSTER PDRN Rejuvenating Cream</b>은 <b>10,000 ppm 고순도 저분자 PDRN</b>을 함유한 피부 재생 및 안티에이징 케어 크림입니다.</div>
+            <div class="text">연어 DNA에서 유래한 PDRN이 손상된 피부 회복을 돕고 피부 탄력과 건강한 피부 환경을 유지하는 데 도움을 줍니다.</div>
+            <div class="text">또한 <b>판테놀, 세라마이드, 엑토인, 나이아신아마이드</b>가 함께 배합되어 보습, 피부 장벽 강화, 피부 톤 개선을 동시에 고려한 포뮬러입니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 주요 효능</div>
+            <div class="text"><b>Skin Regeneration & Recovery</b><br>고농도 PDRN이 손상된 피부의 회복과 피부 재생 환경을 지원합니다.</div>
+            <div class="text"><b>Anti-Aging & Firmness Care</b><br>피부 탄력을 개선하고 잔주름 케어에 도움을 줍니다.</div>
+            <div class="text"><b>Brightening Care</b><br>칙칙하고 불균일한 피부 톤을 개선하여 맑은 피부 표현에 도움을 줍니다.</div>
+            <div class="text"><b>Moisture & Barrier Support</b><br>피부 보습을 강화하고 외부 자극으로부터 피부 장벽을 보호합니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 주요 성분</div>
+            <div class="text"><b>PDRN (10,000 ppm)</b><br>연어 DNA에서 유래한 피부 재생 성분으로 피부 회복과 재생 환경 개선을 돕습니다.</div>
+            <div class="text"><b>Panthenol</b><br>피부 진정 및 보습 케어에 도움을 줍니다.</div>
+            <div class="text"><b>Ceramide & Ectoin</b><br>피부 장벽을 강화하고 수분 보호막 형성에 도움을 줍니다.</div>
+            <div class="text"><b>Niacinamide</b><br>피부 톤 개선과 맑은 피부 표현에 도움을 줍니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 피부 장벽 및 진정 케어 포뮬러</div>
+            <div class="text"><b>세콜지 (Ceramide · Cholesterol · Fatty Acid Complex)</b><br>피부 장벽을 구성하는 핵심 지질 구조를 강화하여 피부 보호막을 안정화하고 수분 손실을 줄이는 데 도움을 줍니다.</div>
+            <div class="text"><b>마이크로바이옴 콤플렉스 (11종)</b><br>피부 유익균 생태계 균형을 유지하여 피부 컨디션과 피부결 개선에 도움을 줍니다.</div>
+            <div class="text"><b>Panthenol · Ectoin · Squalane</b><br>피부 수분 유지력을 높이고 외부 자극으로부터 피부 균형을 보호하는 데 도움을 줍니다.</div>
+            <div class="text"><b>Cica Complex (Centella Asiatica)</b><br>병풀 유래 복합 성분이 피부 진정과 피부 보호막 강화에 도움을 줍니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ PDRN 전달 기술</div>
+            <div class="text">일반적인 PDRN의 분자량은 <b>50 ~ 1,500 kDa</b> 범위로 알려져 있습니다.</div>
+            <div class="text"><b>REJUVUSTER PDRN Rejuvenating Cream</b>은 <b>97 kDa 초저분자 PDRN 구조</b>로 설계되어 피부 장벽 투과성과 유효 성분 전달 효율을 높이도록 설계되었습니다.</div>
+            <div class="text">이를 통해 피부 재생 환경을 보다 효과적으로 지원하도록 개발된 포뮬러입니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 사용 방법</div>
+            <div class="text">세안 → 토너 → 에센스 → <b>REJUVUSTER PDRN Rejuvenating Cream</b></div>
+            <div class="text">크림 단계에서 적당량을 얼굴 전체에 부드럽게 펴 바른 후 충분히 흡수시켜 주세요.</div>
+            <div class="text">피부 재생, 보습, 진정 케어가 필요한 피부에 아침과 저녁 모두 사용할 수 있습니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 추천 대상</div>
+            <div class="text">• 주름과 탄력 저하가 고민인 경우<br>• 피부 재생 및 미백 케어가 필요한 경우<br>• 보습 및 피부 회복 관리가 필요한 경우<br>• 모든 피부 타입</div>
+        </div>
+
+        <div class="lang-panel" data-lang="en">
+            <div class="section-title">REJUVUSTER PDRN Rejuvenating Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">Product Description</div>
+            <div class="text"><b>REJUVUSTER PDRN Rejuvenating Cream</b> is a regenerating and anti-aging cream formulated with <b>10,000 ppm high-purity low-molecular PDRN</b>.</div>
+            <div class="text">PDRN derived from salmon DNA supports skin recovery, improves elasticity, and promotes healthier skin.</div>
+            <div class="text">The formula also includes <b>panthenol, ceramide, ectoin, and niacinamide</b>, providing hydration, barrier protection, and tone improvement.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Key Benefits</div>
+            <div class="text"><b>Skin Regeneration & Recovery</b><br>High-concentration PDRN supports skin repair and regeneration.</div>
+            <div class="text"><b>Anti-Aging & Firmness Care</b><br>Helps improve elasticity and reduce the appearance of fine lines.</div>
+            <div class="text"><b>Brightening Care</b><br>Supports improvement of dull and uneven skin tone.</div>
+            <div class="text"><b>Moisture & Barrier Support</b><br>Strengthens the skin barrier and enhances hydration.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Key Ingredients</div>
+            <div class="text"><b>PDRN (10,000 ppm)</b><br>Supports skin repair and regeneration.</div>
+            <div class="text"><b>Panthenol</b><br>Provides soothing and moisturizing care.</div>
+            <div class="text"><b>Ceramide & Ectoin</b><br>Help strengthen the skin barrier and protect moisture.</div>
+            <div class="text"><b>Niacinamide</b><br>Supports brighter and clearer-looking skin.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Skin Barrier & Soothing Formula</div>
+            <div class="text"><b>Secolji Lipid Complex (Ceramide · Cholesterol · Fatty Acids)</b><br>Helps reinforce the skin’s natural lipid barrier structure and reduce transepidermal water loss.</div>
+            <div class="text"><b>Microbiome Complex (11 strains)</b><br>Supports the balance of beneficial skin microbiota, helping improve overall skin texture and condition.</div>
+            <div class="text"><b>Panthenol · Ectoin · Squalane</b><br>Enhance moisture retention and help protect the skin from external stress.</div>
+            <div class="text"><b>Cica Complex (Centella Asiatica)</b><br>Plant-derived soothing ingredients help calm irritated skin and strengthen the skin barrier.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Advanced PDRN Delivery Technology</div>
+            <div class="text">Conventional PDRN typically has a molecular weight range of <b>50–1,500 kDa</b>.</div>
+            <div class="text"><b>REJUVUSTER PDRN Rejuvenating Cream</b> uses a <b>97 kDa ultra-low molecular PDRN structure</b>, designed to improve skin permeability and enhance bio-delivery efficiency.</div>
+            <div class="text">This optimized molecular design helps support more effective skin regeneration and recovery.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">How to Use</div>
+            <div class="text">Cleanse → Toner → Essence → <b>REJUVUSTER PDRN Rejuvenating Cream</b></div>
+            <div class="text">Apply an appropriate amount to the face at the cream step and gently spread until fully absorbed.</div>
+            <div class="text">Suitable for morning and evening use for hydration, recovery, and soothing care.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Recommended For</div>
+            <div class="text">• Those concerned about wrinkles and loss of firmness<br>• Those seeking skin regeneration and brightening care<br>• Those needing hydration and recovery support<br>• Suitable for all skin types</div>
+        </div>
+
+        <div class="lang-panel" data-lang="zh-Hant">
+            <div class="section-title">REJUVUSTER PDRN Rejuvenating Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">產品說明</div>
+            <div class="text"><b>REJUVUSTER PDRN Rejuvenating Cream</b> 含有 <b>10,000 ppm 高純度低分子 PDRN</b>，是一款專為肌膚再生與抗老護理設計的修護乳霜。</div>
+            <div class="text">PDRN 來自鮭魚 DNA，有助於促進肌膚修復並提升肌膚彈性。</div>
+            <div class="text">配方同時添加 <b>Panthenol、Ceramide、Ectoin、Niacinamide</b>，提供保濕、屏障修護與膚色改善護理。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要功效</div>
+            <div class="text"><b>肌膚再生與修護</b><br>高濃度 PDRN 有助於支持肌膚修復與再生環境。</div>
+            <div class="text"><b>抗老與彈力護理</b><br>幫助改善肌膚彈性並淡化細紋。</div>
+            <div class="text"><b>提亮膚色</b><br>幫助改善暗沉與膚色不均。</div>
+            <div class="text"><b>保濕與屏障支持</b><br>加強保濕並保護肌膚屏障。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要成分</div>
+            <div class="text"><b>PDRN (10,000 ppm)</b><br>支持肌膚修復與再生。</div>
+            <div class="text"><b>Panthenol</b><br>提供舒緩與保濕護理。</div>
+            <div class="text"><b>Ceramide & Ectoin</b><br>幫助強化肌膚屏障並保護水分。</div>
+            <div class="text"><b>Niacinamide</b><br>有助於改善膚色與透亮感。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">肌膚屏障與舒緩配方</div>
+            <div class="text"><b>Secolji 脂質複合體（Ceramide · Cholesterol · Fatty Acid）</b><br>幫助強化肌膚屏障結構並減少水分流失。</div>
+            <div class="text"><b>Microbiome Complex（11 種）</b><br>維持肌膚有益菌生態平衡，改善膚質與肌膚狀態。</div>
+            <div class="text"><b>Panthenol · Ectoin · Squalane</b><br>提升保濕能力並保護肌膚免受外界刺激。</div>
+            <div class="text"><b>Cica Complex（積雪草複合物）</b><br>幫助舒緩敏感肌膚並強化肌膚保護屏障。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">PDRN 傳導技術</div>
+            <div class="text">一般 PDRN 的分子量約為 <b>50–1,500 kDa</b>。</div>
+            <div class="text"><b>REJUVUSTER</b> 採用 <b>97 kDa 超低分子 PDRN 結構</b>，有助於提升肌膚滲透能力與有效成分的傳遞效率。</div>
+            <div class="text">此分子設計有助於更有效支持肌膚修護與再生。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洗臉 → 化妝水 → 精華 → <b>REJUVUSTER PDRN Rejuvenating Cream</b></div>
+            <div class="text">於乳霜步驟取適量塗抹於臉部，並輕柔推開至完全吸收。</div>
+            <div class="text">早晚皆可使用，適合保濕、修護與舒緩護理。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">推薦對象</div>
+            <div class="text">• 在意皺紋與彈力流失者<br>• 需要肌膚再生與亮白護理者<br>• 需要保濕與修護支持者<br>• 適合所有膚質</div>
+        </div>
+
+        <div class="lang-panel" data-lang="zh-Hans">
+            <div class="section-title">REJUVUSTER PDRN Rejuvenating Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">产品说明</div>
+            <div class="text"><b>REJUVUSTER PDRN Rejuvenating Cream</b> 含有 <b>10,000 ppm 高纯度低分子 PDRN</b>，是一款专注于皮肤再生与抗老护理的面霜。</div>
+            <div class="text">PDRN 来源于三文鱼 DNA，可帮助促进皮肤修复并提升弹性。</div>
+            <div class="text">配方中还添加 <b>Panthenol、Ceramide、Ectoin、Niacinamide</b>，提供保湿、屏障护理与肤色改善效果。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要功效</div>
+            <div class="text"><b>皮肤再生与修护</b><br>高浓度 PDRN 有助于支持皮肤修复与再生环境。</div>
+            <div class="text"><b>抗老与弹力护理</b><br>帮助改善弹性并淡化细纹。</div>
+            <div class="text"><b>提亮肤色</b><br>帮助改善暗沉与肤色不均。</div>
+            <div class="text"><b>保湿与屏障支持</b><br>增强保湿并保护皮肤屏障。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要成分</div>
+            <div class="text"><b>PDRN (10,000 ppm)</b><br>支持皮肤修复与再生。</div>
+            <div class="text"><b>Panthenol</b><br>提供舒缓与保湿护理。</div>
+            <div class="text"><b>Ceramide & Ectoin</b><br>帮助强化皮肤屏障并保护水分。</div>
+            <div class="text"><b>Niacinamide</b><br>有助于改善肤色与清透感。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">皮肤屏障与舒缓配方</div>
+            <div class="text"><b>Secolji 脂质复合物（Ceramide · Cholesterol · Fatty Acid）</b><br>帮助强化皮肤屏障结构并减少水分流失。</div>
+            <div class="text"><b>Microbiome Complex（11种）</b><br>维持皮肤有益菌生态平衡，帮助改善肤质。</div>
+            <div class="text"><b>Panthenol · Ectoin · Squalane</b><br>增强保湿能力并帮助保护皮肤免受外界刺激。</div>
+            <div class="text"><b>Cica Complex（积雪草复合物）</b><br>帮助舒缓敏感肌肤并强化皮肤屏障。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">PDRN 传导技术</div>
+            <div class="text">一般 PDRN 的分子量约为 <b>50–1,500 kDa</b>。</div>
+            <div class="text"><b>REJUVUSTER</b> 采用 <b>97 kDa 超低分子 PDRN 结构</b>，有助于提升皮肤渗透能力与活性成分传递效率。</div>
+            <div class="text">该分子设计有助于更有效支持皮肤修护与再生。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洁面 → 化妆水 → 精华 → <b>REJUVUSTER PDRN Rejuvenating Cream</b></div>
+            <div class="text">在面霜步骤取适量涂抹于面部，并轻柔推开至完全吸收。</div>
+            <div class="text">早晚均可使用，适合保湿、修护与舒缓护理。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">推荐对象</div>
+            <div class="text">• 在意皱纹与弹力流失者<br>• 需要皮肤再生与提亮护理者<br>• 需要保湿与修护支持者<br>• 适合所有肤质</div>
+        </div>
+
+        <div class="lang-panel" data-lang="ja">
+            <div class="section-title">REJUVUSTER PDRN Rejuvenating Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">製品説明</div>
+            <div class="text"><b>REJUVUSTER PDRN Rejuvenating Cream</b> は <b>10,000 ppm の高純度低分子 PDRN</b> を配合した再生スキンケアクリームです。</div>
+            <div class="text">サーモン DNA 由来の PDRN が肌の回復をサポートし、弾力のある健康的な肌へ導きます。</div>
+            <div class="text">また <b>Panthenol、Ceramide、Ectoin、Niacinamide</b> を配合し、保湿、バリアケア、肌トーン改善をサポートします。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主な効果</div>
+            <div class="text"><b>肌再生と回復ケア</b><br>高濃度 PDRN が肌修復と再生環境をサポートします。</div>
+            <div class="text"><b>エイジングケアとハリ感</b><br>弾力を高め、小じわを目立ちにくくします。</div>
+            <div class="text"><b>トーンアップケア</b><br>くすみや色ムラの改善をサポートします。</div>
+            <div class="text"><b>保湿とバリアサポート</b><br>うるおいを高め、肌バリアを守ります。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主な成分</div>
+            <div class="text"><b>PDRN (10,000 ppm)</b><br>肌の修復と再生をサポートします。</div>
+            <div class="text"><b>Panthenol</b><br>肌を落ち着かせ、うるおいを与えます。</div>
+            <div class="text"><b>Ceramide & Ectoin</b><br>肌バリアを強化し、水分保持を助けます。</div>
+            <div class="text"><b>Niacinamide</b><br>透明感のある明るい肌印象をサポートします。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">肌バリア＆鎮静フォーミュラ</div>
+            <div class="text"><b>Secolji 脂質コンプレックス（セラミド · コレステロール · 脂肪酸）</b><br>肌バリアの脂質構造を強化し、水分蒸散を抑えるのに役立ちます。</div>
+            <div class="text"><b>マイクロバイオームコンプレックス（11種）</b><br>肌の善玉菌バランスをサポートし、肌コンディションを整えます。</div>
+            <div class="text"><b>Panthenol · Ectoin · Squalane</b><br>保湿力を高め、外部刺激から肌を守ります。</div>
+            <div class="text"><b>Cica Complex（ツボクサエキス）</b><br>敏感になった肌を落ち着かせ、バリア機能をサポートします。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">PDRN デリバリー技術</div>
+            <div class="text">一般的な PDRN の分子量は <b>50〜1,500 kDa</b> とされています。</div>
+            <div class="text"><b>REJUVUSTER</b> は <b>97 kDa の超低分子 PDRN</b> を採用し、肌透過性と有効成分のデリバリー効率を高める設計になっています。</div>
+            <div class="text">この分子設計により、より効果的な肌再生と回復ケアをサポートします。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洗顔 → 化粧水 → 美容液 → <b>REJUVUSTER PDRN Rejuvenating Cream</b></div>
+            <div class="text">クリームのステップで適量を顔全体に塗布し、やさしくなじませてください。</div>
+            <div class="text">朝晩ともに使用でき、保湿・回復・鎮静ケアに適しています。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">おすすめの方</div>
+            <div class="text">• シワやハリ不足が気になる方<br>• 肌再生やブライトニングケアを求める方<br>• 保湿と回復サポートが必要な方<br>• すべての肌タイプにおすすめ</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const basePriceKRW = 45000;
+let currentLang = "ko";
+let currentCurrency = "KRW";
+let exchangeRates = {};
+
+const languageMap = {
+    "ko": {
+        subtitle: "PDRN 리쥬버네이팅 크림",
+        refresh: "새로고침",
+        loading: "환율 정보를 가져오는 중...",
+        updated: "실시간 환율 업데이트 완료",
+        failed: "환율 정보를 불러올 수 없습니다."
+    },
+    "en": {
+        subtitle: "PDRN Rejuvenating Cream",
+        refresh: "Refresh",
+        loading: "Loading rates...",
+        updated: "Live exchange rate updated",
+        failed: "Could not load exchange rate."
+    },
+    "zh-Hant": {
+        subtitle: "PDRN 賦活修護乳霜",
+        refresh: "重新整理",
+        loading: "匯率載入中...",
+        updated: "實時匯率更新完成",
+        failed: "無法載入匯率。"
+    },
+    "zh-Hans": {
+        subtitle: "PDRN 赋活修护面霜",
+        refresh: "刷新",
+        loading: "汇率加载中...",
+        updated: "实时汇率更新完成",
+        failed: "无法加载汇率。"
+    },
+    "ja": {
+        subtitle: "PDRN リジュベネイティングクリーム",
+        refresh: "更新",
+        loading: "読み込み中...",
+        updated: "リアルタイムレート更新完了",
+        failed: "レート取得失敗"
+    }
+};
+const currencySymbols = {
+    "KRW": "₩",
+    "USD": "$",
+    "TWD": "$",
+    "CNY": "¥",
+    "JPY": "¥",
+    "EUR": "€"
+};
+
+async function loadExchangeRates() {
+    const status = document.getElementById("rateStatus");
+    const refreshBtn = document.getElementById("refreshBtn");
+
+    try {
+        refreshBtn.disabled = true;
+        status.innerText = languageMap[currentLang].loading;
+
+        const response = await fetch('https://open.er-api.com/v6/latest/KRW');
+        if (!response.ok) throw new Error();
+
+        const data = await response.json();
+        exchangeRates = data.rates;
+
+        status.innerText = `${languageMap[currentLang].updated}`;
+        updatePriceDisplay();
+    } catch (e) {
+        status.innerText = languageMap[currentLang].failed;
+    } finally {
+        refreshBtn.disabled = false;
+    }
+}
+
+function updatePriceDisplay() {
+    const mainPrice = document.getElementById("mainPrice");
+    const subPrice = document.getElementById("subPrice");
+
+    if (currentCurrency === "KRW") {
+        mainPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+        subPrice.innerText = "";
+        return;
+    }
+
+    if (exchangeRates[currentCurrency]) {
+        const rate = exchangeRates[currentCurrency];
+        const decimalPoint = (currentCurrency === 'USD' || currentCurrency === 'EUR') ? 2 : 0;
+        const converted = (basePriceKRW * rate).toFixed(decimalPoint);
+
+        mainPrice.innerText = `${currentCurrency} ${currencySymbols[currentCurrency]}${Number(converted).toLocaleString(undefined, {minimumFractionDigits: decimalPoint})}`;
+        subPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+    }
+}
+
+function changeCurrency(curr) {
+    currentCurrency = curr;
+    document.querySelectorAll(".curr-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.getAttribute('data-curr') === curr);
+    });
+    updatePriceDisplay();
+}
+
+function switchLanguage(lang){
+    currentLang = lang;
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+
+    document.querySelectorAll(".lang-panel").forEach(panel => {
+        panel.classList.toggle("active", panel.dataset.lang === lang);
+    });
+
+    document.getElementById("subtitle").innerText = languageMap[lang].subtitle;
+    document.getElementById("refreshBtn").innerText = languageMap[lang].refresh;
+
+    const status = document.getElementById("rateStatus");
+    if(
+        status.innerText.includes("완료") ||
+        status.innerText.includes("updated") ||
+        status.innerText.includes("更新") ||
+        status.innerText.includes("完了")
+    ){
+        status.innerText = languageMap[lang].updated;
+    }
+}
+
+switchLanguage("ko");
+loadExchangeRates();
+</script>
+</body>
+</html>
+</div>
+</div>
+
+<script>
+const basePriceKRW = 45000;
+let currentLang = "ko";
+let currentCurrency = "KRW";
+let exchangeRates = {};
+
+const languageMap = {
+    "ko": {
+        subtitle: "PDRN 리쥬버네이팅 크림",
+        refresh: "새로고침",
+        loading: "환율 정보를 가져오는 중...",
+        updated: "실시간 환율 업데이트 완료",
+        failed: "환율 정보를 불러올 수 없습니다."
+    },
+    "en": {
+        subtitle: "PDRN Rejuvenating Cream",
+        refresh: "Refresh",
+        loading: "Loading rates...",
+        updated: "Live exchange rate updated",
+        failed: "Could not load exchange rate."
+    },
+    "zh-Hant": {
+        subtitle: "PDRN 賦活修護乳霜",
+        refresh: "重新整理",
+        loading: "匯率載入中...",
+        updated: "實時匯率更新完成",
+        failed: "無法載入匯率。"
+    },
+    "zh-Hans": {
+        subtitle: "PDRN 赋活修护面霜",
+        refresh: "刷新",
+        loading: "汇率加载中...",
+        updated: "实时汇率更新完成",
+        failed: "无法加载汇率。"
+    },
+    "ja": {
+        subtitle: "PDRN リジュベネイティングクリーム",
+        refresh: "更新",
+        loading: "読み込み中...",
+        updated: "リアルタイムレート更新完了",
+        failed: "レート取得失敗"
+    }
+};
+
+const currencySymbols = {
+    "KRW": "₩",
+    "USD": "$",
+    "TWD": "$",
+    "CNY": "¥",
+    "JPY": "¥",
+    "EUR": "€"
+};
+
+async function loadExchangeRates() {
+    const status = document.getElementById("rateStatus");
+    const refreshBtn = document.getElementById("refreshBtn");
+
+    try {
+        refreshBtn.disabled = true;
+        status.innerText = languageMap[currentLang].loading;
+
+        const response = await fetch('https://open.er-api.com/v6/latest/KRW');
+        if (!response.ok) throw new Error();
+
+        const data = await response.json();
+        exchangeRates = data.rates;
+
+        status.innerText = `${languageMap[currentLang].updated}`;
+        updatePriceDisplay();
+    } catch (e) {
+        status.innerText = languageMap[currentLang].failed;
+    } finally {
+        refreshBtn.disabled = false;
+    }
+}
+
+function updatePriceDisplay() {
+    const mainPrice = document.getElementById("mainPrice");
+    const subPrice = document.getElementById("subPrice");
+
+    if (currentCurrency === "KRW") {
+        mainPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+        subPrice.innerText = "";
+        return;
+    }
+
+    if (exchangeRates[currentCurrency]) {
+        const rate = exchangeRates[currentCurrency];
+        const decimalPoint = (currentCurrency === 'USD' || currentCurrency === 'EUR') ? 2 : 0;
+        const converted = (basePriceKRW * rate).toFixed(decimalPoint);
+
+        mainPrice.innerText = `${currentCurrency} ${currencySymbols[currentCurrency]}${Number(converted).toLocaleString(undefined, {minimumFractionDigits: decimalPoint})}`;
+        subPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+    }
+}
+
+function changeCurrency(curr) {
+    currentCurrency = curr;
+    document.querySelectorAll(".curr-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.getAttribute('data-curr') === curr);
+    });
+    updatePriceDisplay();
+}
+
+function switchLanguage(lang){
+    currentLang = lang;
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+
+    document.querySelectorAll(".lang-panel").forEach(panel => {
+        panel.classList.toggle("active", panel.dataset.lang === lang);
+    });
+
+    document.getElementById("subtitle").innerText = languageMap[lang].subtitle;
+    document.getElementById("refreshBtn").innerText = languageMap[lang].refresh;
+
+    const status = document.getElementById("rateStatus");
+    if(
+        status.innerText.includes("완료") ||
+        status.innerText.includes("updated") ||
+        status.innerText.includes("更新") ||
+        status.innerText.includes("完了")
+    ){
+        status.innerText = languageMap[lang].updated;
+    }
+}
+
+switchLanguage("ko");
+loadExchangeRates();
+</script>
+</body>
+</html>

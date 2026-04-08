@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reju de vie Repair Cream</title>
+<style>
+    *{ box-sizing:border-box; }
+
+    body{
+        margin:0;
+        background:#efefef;
+        color:#111;
+        font-family: "PingFang TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    img{
+        max-width:100%;
+        height:auto;
+    }
+
+    .container{ max-width:900px; margin:auto; }
+    .product-image{ width:100%; }
+    .product-image img{ width:100%; display:block; }
+
+    .content{ padding:80px 60px; }
+
+    .title{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:72px;
+        font-weight:300;
+        letter-spacing:-2px;
+        line-height:0.95;
+    }
+
+    .subtitle{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:42px;
+        margin-bottom:18px;
+        font-weight:300;
+        line-height:1.25;
+    }
+
+    .lang-switch{
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        gap:8px;
+        flex-wrap:wrap;
+        margin-bottom:32px;
+    }
+
+    .lang-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        color:#666;
+        font-size:12px;
+        letter-spacing:0.1em;
+        text-transform:uppercase;
+        cursor:pointer;
+        padding:6px 12px;
+        transition:all 0.25s ease;
+    }
+
+    .lang-btn:hover{
+        border-color:#111;
+        color:#111;
+    }
+
+    .lang-btn.active{
+        background:#111;
+        color:#fff;
+        border-color:#111;
+        font-weight:500;
+    }
+
+    .currency-section{
+        margin-bottom:60px;
+        text-align:right;
+    }
+
+    .currency-tabs{
+        display:flex;
+        justify-content:flex-end;
+        gap:12px;
+        margin-bottom:12px;
+        flex-wrap:wrap;
+    }
+
+    .curr-tab{
+        border:none;
+        background:none;
+        font-size:13px;
+        color:#999;
+        cursor:pointer;
+        padding:0;
+        letter-spacing:0.05em;
+        transition:color 0.2s;
+        position:relative;
+    }
+
+    .curr-tab.active{
+        color:#111;
+        font-weight:600;
+    }
+
+    .curr-tab.active::after{
+        content:"";
+        display:block;
+        width:100%;
+        height:1px;
+        background:#111;
+        margin-top:2px;
+    }
+
+    .price-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:baseline;
+        gap:12px;
+    }
+
+    .price-main{
+        font-size:38px;
+        font-weight:500;
+        letter-spacing:-0.5px;
+    }
+
+    .price-sub{
+        font-size:18px;
+        color:#888;
+        text-decoration: line-through;
+    }
+
+    .status-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        gap:10px;
+        margin-top:8px;
+    }
+
+    .status{
+        font-size:12px;
+        color:#aaa;
+    }
+
+    .currency-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        padding:4px 10px;
+        cursor:pointer;
+        font-size:11px;
+        text-transform:uppercase;
+    }
+
+    .lang-panel{ display:none; }
+    .lang-panel.active{ display:block; }
+
+    .text{
+        font-size:26px;
+        line-height:1.9;
+        margin-bottom:34px;
+        font-weight:300;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+        max-width:640px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:left;
+    }
+
+    .section-title{
+        font-size:30px;
+        font-weight:700;
+        line-height:1.4;
+        margin:56px 0 18px 0;
+        letter-spacing:-0.01em;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+        max-width:640px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:left;
+    }
+
+    @media (max-width:768px){
+        .container{ max-width:100%; }
+        .content{ padding:36px 20px; }
+
+        .title{
+            font-size:42px;
+            letter-spacing:-1px;
+            word-break:break-word;
+        }
+
+        .subtitle{
+            font-size:24px;
+            line-height:1.3;
+            margin-bottom:16px;
+        }
+
+        .lang-switch{
+            gap:6px;
+            margin-bottom:24px;
+        }
+
+        .lang-btn{
+            font-size:11px;
+            padding:6px 10px;
+        }
+
+        .currency-tabs{
+            gap:10px;
+            row-gap:6px;
+        }
+
+        .price-row{
+            flex-direction:column;
+            align-items:flex-end;
+            gap:4px;
+        }
+
+        .price-main{
+            font-size:26px;
+            text-align:right;
+        }
+
+        .price-sub{ font-size:13px; }
+
+        .status-row{
+            flex-wrap:wrap;
+            justify-content:flex-end;
+            gap:8px;
+        }
+
+        .status{
+            font-size:11px;
+            text-align:right;
+        }
+
+        .currency-btn{
+            font-size:10px;
+            padding:4px 8px;
+        }
+
+        .text{
+            font-size:17px;
+            line-height:1.8;
+            margin-bottom:22px;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+            max-width:640px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:left;
+        }
+
+        .section-title{
+            font-size:21px;
+            margin:34px 0 12px 0;
+            line-height:1.35;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+            max-width:640px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:left;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="product-image">
+        <img src="reju_de_vie.png" alt="Reju de vie Repair Cream">
+    </div>
+
+    <div class="content">
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="ko" onclick="switchLanguage('ko')">KR</button>
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="zh-Hant" onclick="switchLanguage('zh-Hant')">繁中</button>
+            <button class="lang-btn" data-lang="zh-Hans" onclick="switchLanguage('zh-Hans')">简中</button>
+            <button class="lang-btn" data-lang="ja" onclick="switchLanguage('ja')">日本語</button>
+        </div>
+
+        <div class="title">Reju de vie</div>
+        <div class="subtitle" id="subtitle">Repair Cream</div>
+
+        <div class="currency-section">
+            <div class="currency-tabs">
+                <button class="curr-tab active" data-curr="KRW" onclick="changeCurrency('KRW')">KRW</button>
+                <button class="curr-tab" data-curr="USD" onclick="changeCurrency('USD')">USD</button>
+                <button class="curr-tab" data-curr="TWD" onclick="changeCurrency('TWD')">TWD</button>
+                <button class="curr-tab" data-curr="CNY" onclick="changeCurrency('CNY')">CNY</button>
+                <button class="curr-tab" data-curr="JPY" onclick="changeCurrency('JPY')">JPY</button>
+                <button class="curr-tab" data-curr="EUR" onclick="changeCurrency('EUR')">EUR</button>
+            </div>
+            <div class="price-row">
+                <div class="price-sub" id="subPrice"></div>
+                <div class="price-main" id="mainPrice">₩0</div>
+            </div>
+            <div class="status-row">
+                <div class="status" id="rateStatus">Loading rates...</div>
+                <button class="currency-btn" id="refreshBtn" onclick="loadExchangeRates()">Refresh</button>
+            </div>
+        </div>
+
+        <div class="lang-panel active" data-lang="ko">
+            <div class="section-title">Reju de vie Repair Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">│ 제품 설명</div>
+            <div class="text"><b>Reju de vie Repair Cream</b>은 <b>PDRN 1,300 ppm, 콜라겐, 엑소좀</b>을 함유한 피부 재생 크림으로, 피부 회복과 진정, 보습을 동시에 고려한 3중 시너지 포뮬러로 설계되었습니다.</div>
+            <div class="text">특히 여름철 자외선 노출로 인한 표피 손상, 수분 손실, 피부 장벽 약화를 집중적으로 관리할 수 있도록 개발되었습니다.</div>
+            <div class="text">피부가 강한 자외선에 반복적으로 노출되면 탄력 저하와 건조함이 나타나고, 피부 내부에서는 장벽 손상과 재생 능력 저하가 발생할 수 있습니다. 이러한 경우 단순한 보습만으로는 충분한 개선이 어려울 수 있습니다.</div>
+            <div class="text">Reju de vie Repair Cream은 <b>PDRN 1,300 ppm</b>을 중심으로 콜라겐과 엑소좀을 결합한 복합 포뮬러를 통해 피부 재생 환경을 지원하고, 피부 진정과 보습 케어를 동시에 제공합니다.</div>
+            <div class="text">꾸준히 사용하면 손상된 피부의 회복을 돕고 피부결을 개선하여 더욱 건강하고 탄력 있는 피부로 가꾸는 데 도움을 줄 수 있습니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 주요 성분</div>
+            <div class="text"><b>PDRN (1,300 ppm)</b><br>연어 DNA에서 유래된 성분으로 손상된 피부 조직의 회복을 돕고 피부 진정에 도움을 줄 수 있습니다.</div>
+            <div class="text"><b>Low Molecular Collagen</b><br>저분자 콜라겐이 피부 탄력 개선을 돕고 피부를 보다 매끄럽고 건강하게 유지하도록 지원합니다.</div>
+            <div class="text"><b>Exosome</b><br>피부 세포 간 신호 전달을 활성화하여 피부 재생 환경을 돕고 유효 성분의 흡수를 지원합니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 사용 방법</div>
+            <div class="text">세안 → 토너 / 에센스 → <b>Reju de vie Repair Cream</b> → (낮) 자외선 차단제</div>
+            <div class="text">적당량을 얼굴 전체 또는 예민한 부위에 부드럽게 펴 바른 후 손바닥으로 가볍게 눌러 흡수시킵니다.</div>
+            <div class="text">피부 장벽이 약해졌거나 시술 후 피부 관리가 필요한 경우, 또는 자외선 노출이 많은 여름철 집중 관리용으로 사용할 수 있습니다.</div>
+        </div>
+
+        <div class="lang-panel" data-lang="en">
+            <div class="section-title">Reju de vie Repair Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">Product Description</div>
+            <div class="text"><b>Reju de vie Repair Cream</b> is a skin-repairing cream formulated with <b>1,300 ppm PDRN, collagen, and exosomes</b>, designed to provide a triple-synergy formula that supports skin regeneration, soothing care, and hydration.</div>
+            <div class="text">The formula focuses particularly on restoring skin affected by UV exposure, moisture loss, and weakened skin barrier, which are common concerns during the summer season.</div>
+            <div class="text">Repeated exposure to strong sunlight may lead to reduced elasticity, dryness, and weakened skin barrier function. In such cases, simple moisturization alone may not be sufficient for optimal skin recovery.</div>
+            <div class="text">By combining <b>1,300 ppm PDRN</b> with collagen and exosomes, the cream helps support the skin’s regenerative environment while providing soothing and moisturizing care.</div>
+            <div class="text">With regular use, it helps improve overall skin texture and promotes healthier, more resilient-looking skin.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Key Ingredients</div>
+            <div class="text"><b>PDRN (1,300 ppm)</b><br>Derived from salmon DNA, PDRN helps support skin regeneration and recovery while soothing irritated skin.</div>
+            <div class="text"><b>Low Molecular Collagen</b><br>Helps improve skin elasticity and maintain smoother, healthier-looking skin.</div>
+            <div class="text"><b>Exosome</b><br>Supports cellular communication within the skin, helping enhance regeneration and improve the delivery of active ingredients.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">How to Use</div>
+            <div class="text">Cleansing → Toner / Essence → <b>Reju de vie Repair Cream</b> → (Daytime) Sunscreen</div>
+            <div class="text">Apply an appropriate amount to the entire face or sensitive areas and gently press with your palms to aid absorption.</div>
+            <div class="text">For intensive care, the cream can be used when the skin barrier feels weakened, after skin procedures, or during seasons with strong UV exposure such as summer.</div>
+        </div>
+
+        <div class="lang-panel" data-lang="zh-Hant">
+            <div class="section-title">Reju de vie Repair Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">產品說明</div>
+            <div class="text"><b>Reju de vie Repair Cream</b> 含有 <b>1,300 ppm PDRN、膠原蛋白與外泌體（Exosome）</b>，透過三重協同配方，同時針對肌膚再生、舒緩與保濕進行護理。</div>
+            <div class="text">產品特別針對夏季紫外線造成的肌膚損傷、水分流失與肌膚屏障減弱等問題而設計。</div>
+            <div class="text">長時間暴露於強烈紫外線下可能導致肌膚彈性下降、乾燥以及肌膚屏障受損。此時僅依靠一般保濕往往難以改善。</div>
+            <div class="text">透過 <b>1,300 ppm PDRN</b> 與膠原蛋白、外泌體的複合配方，Reju de vie Repair Cream 有助於支持肌膚修復環境，同時提供舒緩與保濕護理。</div>
+            <div class="text">持續使用可幫助改善膚質，使肌膚更加健康細緻。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要成分</div>
+            <div class="text"><b>PDRN (1,300 ppm)</b><br>源自鮭魚 DNA，有助於受損肌膚組織修復並舒緩肌膚。</div>
+            <div class="text"><b>低分子膠原蛋白</b><br>幫助改善肌膚彈性，使肌膚更加細緻與健康。</div>
+            <div class="text"><b>外泌體 (Exosome)</b><br>促進肌膚細胞間訊號傳遞，幫助提升肌膚再生環境與有效成分吸收。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洗臉 → 化妝水 / 精華 → <b>Reju de vie Repair Cream</b> →（白天）防曬</div>
+            <div class="text">取適量塗抹於全臉或敏感部位，並以手掌輕壓幫助吸收。</div>
+            <div class="text">當肌膚屏障受損、醫美療程後或夏季紫外線較強時，可作為集中修護保養使用。</div>
+        </div>
+
+        <div class="lang-panel" data-lang="zh-Hans">
+            <div class="section-title">Reju de vie Repair Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">产品说明</div>
+            <div class="text"><b>Reju de vie Repair Cream</b> 含有 <b>1,300 ppm PDRN、胶原蛋白和外泌体（Exosome）</b>，通过三重协同配方，同时帮助肌肤再生、舒缓与保湿。</div>
+            <div class="text">该产品特别针对夏季紫外线造成的皮肤损伤、水分流失以及皮肤屏障减弱等问题进行护理。</div>
+            <div class="text">长期暴露在强烈紫外线下可能导致皮肤弹性下降、干燥以及屏障受损，仅依靠普通保湿往往难以改善。</div>
+            <div class="text">通过 <b>1,300 ppm PDRN</b> 与胶原蛋白和外泌体的复合配方，该产品帮助支持皮肤修复环境，同时提供舒缓与保湿护理。</div>
+            <div class="text">持续使用有助于改善肤质，使皮肤更加健康细腻。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要成分</div>
+            <div class="text"><b>PDRN (1,300 ppm)</b><br>来源于三文鱼 DNA，有助于修复受损皮肤并舒缓肌肤。</div>
+            <div class="text"><b>低分子胶原蛋白</b><br>帮助改善皮肤弹性，使肌肤更加细腻健康。</div>
+            <div class="text"><b>外泌体 (Exosome)</b><br>促进皮肤细胞之间的信息传递，帮助增强皮肤再生能力并提高有效成分吸收。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洁面 → 化妆水 / 精华 → <b>Reju de vie Repair Cream</b> →（白天）防晒</div>
+            <div class="text">取适量均匀涂抹于全脸或敏感部位，并用手掌轻压帮助吸收。</div>
+            <div class="text">当皮肤屏障较弱、医美术后或夏季紫外线较强时，可作为集中修护护理使用。</div>
+        </div>
+
+        <div class="lang-panel" data-lang="ja">
+            <div class="section-title">Reju de vie Repair Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">製品説明</div>
+            <div class="text"><b>Reju de vie Repair Cream</b> は <b>1,300 ppm の PDRN、コラーゲン、エクソソーム</b> を配合したスキンリペアクリームで、肌再生・保湿・鎮静を同時にサポートするトリプルシナジーフォーミュラを採用しています。</div>
+            <div class="text">特に夏の紫外線による肌ダメージ、水分損失、バリア機能の低下に着目して開発されています。</div>
+            <div class="text">強い紫外線を繰り返し浴びることで、肌の弾力低下や乾燥、さらに肌バリアの弱化が起こることがあります。このような状態では単なる保湿だけでは十分ではない場合があります。</div>
+            <div class="text"><b>1,300 ppm の PDRN</b> とコラーゲン、エクソソームを組み合わせた処方により、肌の再生環境をサポートしながら保湿と鎮静ケアを同時に行います。</div>
+            <div class="text">継続して使用することで、より健康的でなめらかな肌へ導きます。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主な成分</div>
+            <div class="text"><b>PDRN (1,300 ppm)</b><br>サーモン DNA 由来成分で、ダメージを受けた肌の回復と肌の鎮静をサポートします。</div>
+            <div class="text"><b>低分子コラーゲン</b><br>肌の弾力をサポートし、よりなめらかで健康的な肌へ導きます。</div>
+            <div class="text"><b>エクソソーム (Exosome)</b><br>肌細胞間の情報伝達をサポートし、再生環境の向上と有効成分の浸透を助けます。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洗顔 → 化粧水 / エッセンス → <b>Reju de vie Repair Cream</b> →（日中）日焼け止め</div>
+            <div class="text">適量を顔全体または敏感な部分に塗布し、手のひらで軽く押さえて吸収させます。</div>
+            <div class="text">肌バリアが弱っているときや施術後、また紫外線が強い夏の集中ケアとして使用することもおすすめです。</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const basePriceKRW = 35000; // 상품 가격에 맞게 수정하세요.
+let currentLang = "ko";
+let currentCurrency = "KRW";
+let exchangeRates = {};
+
+const languageMap = {
+    "ko": {
+        subtitle: "리페어 크림",
+        refresh: "새로고침",
+        loading: "환율 정보를 가져오는 중...",
+        updated: "실시간 환율 업데이트 완료",
+        failed: "환율 정보를 불러올 수 없습니다."
+    },
+    "en": {
+        subtitle: "Repair Cream",
+        refresh: "Refresh",
+        loading: "Loading rates...",
+        updated: "Live exchange rate updated",
+        failed: "Could not load exchange rate."
+    },
+    "zh-Hant": {
+        subtitle: "修護乳霜",
+        refresh: "重新整理",
+        loading: "匯率載入中...",
+        updated: "實時匯率更新完成",
+        failed: "無法載入匯率。"
+    },
+    "zh-Hans": {
+        subtitle: "修护面霜",
+        refresh: "刷新",
+        loading: "汇率加载中...",
+        updated: "实时汇率更新完成",
+        failed: "无法加载汇率。"
+    },
+    "ja": {
+        subtitle: "リペアクリーム",
+        refresh: "更新",
+        loading: "読み込み中...",
+        updated: "リアルタイムレート更新完了",
+        failed: "レート取得失敗"
+    }
+};
+
+const currencySymbols = {
+    "KRW": "₩",
+    "USD": "$",
+    "TWD": "$",
+    "CNY": "¥",
+    "JPY": "¥",
+    "EUR": "€"
+};
+
+async function loadExchangeRates() {
+    const status = document.getElementById("rateStatus");
+    const refreshBtn = document.getElementById("refreshBtn");
+
+    try {
+        refreshBtn.disabled = true;
+        status.innerText = languageMap[currentLang].loading;
+
+        const response = await fetch('https://open.er-api.com/v6/latest/KRW');
+        if (!response.ok) throw new Error();
+
+        const data = await response.json();
+        exchangeRates = data.rates;
+
+        status.innerText = `${languageMap[currentLang].updated}`;
+        updatePriceDisplay();
+    } catch (e) {
+        status.innerText = languageMap[currentLang].failed;
+    } finally {
+        refreshBtn.disabled = false;
+    }
+}
+
+function updatePriceDisplay() {
+    const mainPrice = document.getElementById("mainPrice");
+    const subPrice = document.getElementById("subPrice");
+
+    if (currentCurrency === "KRW") {
+        mainPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+        subPrice.innerText = "";
+        return;
+    }
+
+    if (exchangeRates[currentCurrency]) {
+        const rate = exchangeRates[currentCurrency];
+        const decimalPoint = (currentCurrency === 'USD' || currentCurrency === 'EUR') ? 2 : 0;
+        const converted = (basePriceKRW * rate).toFixed(decimalPoint);
+
+        mainPrice.innerText = `${currentCurrency} ${currencySymbols[currentCurrency]}${Number(converted).toLocaleString(undefined, {minimumFractionDigits: decimalPoint})}`;
+        subPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+    }
+}
+
+function changeCurrency(curr) {
+    currentCurrency = curr;
+    document.querySelectorAll(".curr-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.getAttribute('data-curr') === curr);
+    });
+    updatePriceDisplay();
+}
+
+function switchLanguage(lang){
+    currentLang = lang;
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+
+    document.querySelectorAll(".lang-panel").forEach(panel => {
+        panel.classList.toggle("active", panel.dataset.lang === lang);
+    });
+
+    document.getElementById("subtitle").innerText = languageMap[lang].subtitle;
+    document.getElementById("refreshBtn").innerText = languageMap[lang].refresh;
+
+    const status = document.getElementById("rateStatus");
+    if(
+        status.innerText.includes("완료") ||
+        status.innerText.includes("updated") ||
+        status.innerText.includes("更新") ||
+        status.innerText.includes("完了")
+    ){
+        status.innerText = languageMap[lang].updated;
+    }
+}
+
+switchLanguage("ko");
+loadExchangeRates();
+</script>
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rejuchiol PDRN Perfect Cream</title>
+<style>
+    *{ box-sizing:border-box; }
+
+    body{
+        margin:0;
+        background:#efefef;
+        color:#111;
+        font-family: "PingFang TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    img{
+        max-width:100%;
+        height:auto;
+    }
+
+    .container{ max-width:900px; margin:auto; }
+    .product-image{ width:100%; }
+    .product-image img{ width:100%; display:block; }
+
+    .content{ padding:80px 60px; }
+
+    .title{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:72px;
+        font-weight:300;
+        letter-spacing:-2px;
+        line-height:0.95;
+    }
+
+    .subtitle{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:42px;
+        margin-bottom:18px;
+        font-weight:300;
+        line-height:1.25;
+    }
+
+    .lang-switch{
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        gap:8px;
+        flex-wrap:wrap;
+        margin-bottom:32px;
+    }
+
+    .lang-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        color:#666;
+        font-size:12px;
+        letter-spacing:0.1em;
+        text-transform:uppercase;
+        cursor:pointer;
+        padding:6px 12px;
+        transition:all 0.25s ease;
+    }
+
+    .lang-btn:hover{
+        border-color:#111;
+        color:#111;
+    }
+
+    .lang-btn.active{
+        background:#111;
+        color:#fff;
+        border-color:#111;
+        font-weight:500;
+    }
+
+    .currency-section{
+        margin-bottom:60px;
+        text-align:right;
+    }
+
+    .currency-tabs{
+        display:flex;
+        justify-content:flex-end;
+        gap:12px;
+        margin-bottom:12px;
+        flex-wrap:wrap;
+    }
+
+    .curr-tab{
+        border:none;
+        background:none;
+        font-size:13px;
+        color:#999;
+        cursor:pointer;
+        padding:0;
+        letter-spacing:0.05em;
+        transition:color 0.2s;
+        position:relative;
+    }
+
+    .curr-tab.active{
+        color:#111;
+        font-weight:600;
+    }
+
+    .curr-tab.active::after{
+        content:"";
+        display:block;
+        width:100%;
+        height:1px;
+        background:#111;
+        margin-top:2px;
+    }
+
+    .price-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:baseline;
+        gap:12px;
+    }
+
+    .price-main{
+        font-size:38px;
+        font-weight:500;
+        letter-spacing:-0.5px;
+    }
+
+    .price-sub{
+        font-size:18px;
+        color:#888;
+        text-decoration: line-through;
+    }
+
+    .status-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        gap:10px;
+        margin-top:8px;
+    }
+
+    .status{
+        font-size:12px;
+        color:#aaa;
+    }
+
+    .currency-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        padding:4px 10px;
+        cursor:pointer;
+        font-size:11px;
+        text-transform:uppercase;
+    }
+
+    .lang-panel{ display:none; }
+    .lang-panel.active{ display:block; }
+
+    .text{
+        font-size:26px;
+        line-height:1.9;
+        margin-bottom:34px;
+        font-weight:300;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+        max-width:640px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:left;
+    }
+
+    .section-title{
+        font-size:30px;
+        font-weight:700;
+        line-height:1.4;
+        margin:56px 0 18px 0;
+        letter-spacing:-0.01em;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+        max-width:640px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:left;
+    }
+
+    @media (max-width:768px){
+        .container{ max-width:100%; }
+        .content{ padding:36px 20px; }
+
+        .title{
+            font-size:42px;
+            letter-spacing:-1px;
+            word-break:break-word;
+        }
+
+        .subtitle{
+            font-size:24px;
+            line-height:1.3;
+            margin-bottom:16px;
+        }
+
+        .lang-switch{
+            gap:6px;
+            margin-bottom:24px;
+        }
+
+        .lang-btn{
+            font-size:11px;
+            padding:6px 10px;
+        }
+
+        .currency-tabs{
+            gap:10px;
+            row-gap:6px;
+        }
+
+        .price-row{
+            flex-direction:column;
+            align-items:flex-end;
+            gap:4px;
+        }
+
+        .price-main{
+            font-size:26px;
+            text-align:right;
+        }
+
+        .price-sub{ font-size:13px; }
+
+        .status-row{
+            flex-wrap:wrap;
+            justify-content:flex-end;
+            gap:8px;
+        }
+
+        .status{
+            font-size:11px;
+            text-align:right;
+        }
+
+        .currency-btn{
+            font-size:10px;
+            padding:4px 8px;
+        }
+
+        .text{
+            font-size:17px;
+            line-height:1.8;
+            margin-bottom:22px;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+            max-width:640px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:left;
+        }
+
+        .section-title{
+            font-size:21px;
+            margin:34px 0 12px 0;
+            line-height:1.35;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+            max-width:640px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:left;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="product-image">
+        <img src="rejuchiol.png" alt="Rejuchiol PDRN Perfect Cream">
+    </div>
+
+    <div class="content">
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="ko" onclick="switchLanguage('ko')">KR</button>
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="zh-Hant" onclick="switchLanguage('zh-Hant')">繁中</button>
+            <button class="lang-btn" data-lang="zh-Hans" onclick="switchLanguage('zh-Hans')">简中</button>
+            <button class="lang-btn" data-lang="ja" onclick="switchLanguage('ja')">日本語</button>
+        </div>
+
+        <div class="title">Rejuchiol</div>
+        <div class="subtitle" id="subtitle">PDRN Perfect Cream</div>
+
+        <div class="currency-section">
+            <div class="currency-tabs">
+                <button class="curr-tab active" data-curr="KRW" onclick="changeCurrency('KRW')">KRW</button>
+                <button class="curr-tab" data-curr="USD" onclick="changeCurrency('USD')">USD</button>
+                <button class="curr-tab" data-curr="TWD" onclick="changeCurrency('TWD')">TWD</button>
+                <button class="curr-tab" data-curr="CNY" onclick="changeCurrency('CNY')">CNY</button>
+                <button class="curr-tab" data-curr="JPY" onclick="changeCurrency('JPY')">JPY</button>
+                <button class="curr-tab" data-curr="EUR" onclick="changeCurrency('EUR')">EUR</button>
+            </div>
+            <div class="price-row">
+                <div class="price-sub" id="subPrice"></div>
+                <div class="price-main" id="mainPrice">₩0</div>
+            </div>
+            <div class="status-row">
+                <div class="status" id="rateStatus">Loading rates...</div>
+                <button class="currency-btn" id="refreshBtn" onclick="loadExchangeRates()">Refresh</button>
+            </div>
+        </div>
+
+
+        <div class="lang-panel active" data-lang="ko">
+            <div class="section-title">Rejuchiol PDRN Perfect Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">│ 제품 설명</div>
+            <div class="text"><b>Rejuchiol PDRN Perfect Cream</b>은 고농도 <b>PDRN(Polydeoxyribonucleotide) 1,500 ppm</b>과 식물성 레티놀 대체 성분인 <b>바쿠치올(Bakuchiol)</b>을 함유한 피부 재생 및 탄력 케어 크림입니다.</div>
+            <div class="text">연어 DNA에서 유래한 PDRN은 손상된 피부 조직의 회복과 피부 장벽 강화에 도움을 주며, 피부 재생 환경을 개선하여 보다 건강하고 탄력 있는 피부로 가꾸는 데 도움을 줍니다.</div>
+            <div class="text">바쿠치올은 레티놀과 유사한 항산화 및 탄력 개선 효과를 제공하면서도 자극이 적어 민감한 피부나 시술 후 피부에도 비교적 부담 없이 사용할 수 있는 성분입니다.</div>
+            <div class="text">이 크림은 피부 재생, 탄력 개선, 장벽 강화, 진정 케어를 동시에 고려한 포뮬러로 외부 자극으로 약해진 피부를 보다 안정적으로 관리할 수 있도록 설계되었습니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 주요 효능</div>
+            <div class="text"><b>Skin Regeneration & Barrier Support</b><br>고농도 PDRN이 피부 세포 재생을 돕고 손상된 피부 장벽 회복을 지원합니다.</div>
+            <div class="text"><b>Firmness & Wrinkle Improvement</b><br>바쿠치올이 콜라겐 생성 환경을 지원하여 피부 탄력 개선과 잔주름 케어에 도움을 줍니다.</div>
+            <div class="text"><b>Soothing & Nourishing Care</b><br>외부 자극으로 예민해진 피부를 진정시키고 영양을 공급하여 피부 컨디션을 개선합니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 주요 성분</div>
+            <div class="text"><b>PDRN (1500 ppm)</b><br>연어 DNA에서 유래한 피부 재생 성분으로 조직 회복을 돕고 피부 재생 환경을 개선합니다.</div>
+            <div class="text"><b>Bakuchiol</b><br>보골지 식물에서 추출된 천연 성분으로 레티놀과 유사한 효과를 제공하면서도 피부 자극이 비교적 적은 성분입니다.</div>
+            <div class="text"><b>Triple Peptide Complex</b><br>피부 구조를 지지하는 단백질 생성을 지원하여 피부 탄력을 유지하는 데 도움을 줍니다.</div>
+            <div class="text"><b>Ceramide NP & Centella Asiatica</b><br>피부 장벽을 강화하고 민감해진 피부를 진정시키는 데 도움을 줍니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 바쿠치올(Bakuchiol)이란?</div>
+            <div class="text">바쿠치올은 식물 유래 성분으로 <b>레티놀과 유사한 주름 개선 및 피부 톤 개선 효과</b>를 제공하는 것으로 알려져 있습니다.</div>
+            <div class="text">레티놀과 달리 자극이 비교적 적어 민감성 피부나 건성 피부에도 사용할 수 있는 성분으로 알려져 있습니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 사용 방법</div>
+            <div class="text">세안 → 토너 → 에센스 → <b>Rejuchiol PDRN Perfect Cream</b></div>
+            <div class="text">적당량을 얼굴에 바른 후 손바닥으로 가볍게 눌러 흡수시켜 줍니다.</div>
+            <div class="text">주름이나 흉터 등 집중 케어가 필요한 부위에는 한 번 더 덧발라 사용할 수 있습니다.</div>
+            <div class="text">아침 사용 시에는 자외선 차단제를 함께 사용하는 것이 좋습니다.</div>
+        </div>
+
+        <div class="lang-panel" data-lang="en">
+            <div class="section-title">Rejuchiol PDRN Perfect Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">Product Description</div>
+            <div class="text"><b>Rejuchiol PDRN Perfect Cream</b> is an advanced skin-repair cream formulated with <b>high-concentration PDRN (1500 ppm)</b> and <b>Bakuchiol</b>, a plant-based retinol alternative.</div>
+            <div class="text">PDRN derived from salmon DNA supports skin regeneration and helps restore damaged skin barriers, promoting healthier and more resilient skin.</div>
+            <div class="text">Bakuchiol provides antioxidant and firming benefits similar to retinol while being gentler on the skin, making it suitable for sensitive or post-procedure skin care.</div>
+            <div class="text">The formula is designed to support skin recovery, elasticity improvement, and barrier strengthening while delivering soothing and nourishing care.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Key Benefits</div>
+            <div class="text"><b>Skin Regeneration & Barrier Repair</b><br>High-concentration PDRN helps support cellular regeneration and strengthens the skin barrier.</div>
+            <div class="text"><b>Firmness & Wrinkle Care</b><br>Bakuchiol supports collagen production and helps improve skin elasticity and fine lines.</div>
+            <div class="text"><b>Soothing & Nourishing Care</b><br>Helps calm irritated skin and deliver essential nutrients to stressed skin.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Key Ingredients</div>
+            <div class="text"><b>PDRN (1500 ppm)</b><br>Derived from salmon DNA, this bioactive ingredient helps support tissue repair and skin regeneration.</div>
+            <div class="text"><b>Bakuchiol</b><br>A plant-based retinol alternative known for improving wrinkles and skin elasticity with less irritation.</div>
+            <div class="text"><b>Triple Peptide Complex</b><br>Supports the skin’s structural matrix and helps improve firmness.</div>
+            <div class="text"><b>Ceramide NP & Centella Asiatica</b><br>Strengthen the skin barrier and soothe sensitive skin.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">What is Bakuchiol?</div>
+            <div class="text">Bakuchiol is a plant-derived ingredient known as a <b>natural alternative to retinol</b>.</div>
+            <div class="text">It works similarly to retinol in improving wrinkles and skin tone but is generally gentler and suitable for sensitive or dry skin.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">How to Use</div>
+            <div class="text">Cleanse → Toner → Essence → <b>Rejuchiol PDRN Perfect Cream</b></div>
+            <div class="text">Apply an appropriate amount evenly across the face.</div>
+            <div class="text">Gently press into the skin using your palms to enhance absorption.</div>
+            <div class="text">Apply an extra layer to areas with wrinkles or acne scars if needed.</div>
+            <div class="text">Always finish with sunscreen when used in the morning.</div>
+        </div>
+
+        <div class="lang-panel" data-lang="zh-Hant">
+            <div class="section-title">Rejuchiol PDRN Perfect Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">產品說明</div>
+            <div class="text"><b>Rejuchiol PDRN Perfect Cream</b> 含有 <b>1500 ppm PDRN</b> 與植物來源的 <b>Bakuchiol</b> 成分，是一款專注於肌膚修護與彈力管理的再生乳霜。</div>
+            <div class="text">PDRN 來自鮭魚 DNA，有助於促進肌膚再生並修復受損的肌膚屏障。</div>
+            <div class="text">Bakuchiol 為植物性視黃醇替代成分，可幫助改善細紋與彈力，同時較溫和，適合敏感肌或術後護理。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要功效</div>
+            <div class="text"><b>肌膚再生與屏障修護</b><br>高濃度 PDRN 有助於支持肌膚細胞更新並強化肌膚屏障。</div>
+            <div class="text"><b>彈力與細紋護理</b><br>Bakuchiol 有助於改善肌膚彈性與細紋問題。</div>
+            <div class="text"><b>舒緩與滋養護理</b><br>幫助舒緩敏感肌膚並提供養分。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要成分</div>
+            <div class="text"><b>PDRN (1500 ppm)</b><br>源自鮭魚 DNA，有助於修護受損肌膚並支持再生環境。</div>
+            <div class="text"><b>Bakuchiol</b><br>植物性視黃醇替代成分，可改善細紋與彈性，刺激性較低。</div>
+            <div class="text"><b>Triple Peptide Complex</b><br>有助於支撐肌膚結構並提升緊緻度。</div>
+            <div class="text"><b>Ceramide NP & Centella Asiatica</b><br>幫助強化肌膚屏障並舒緩敏感肌膚。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">什麼是 Bakuchiol？</div>
+            <div class="text">Bakuchiol 是植物來源成分，被視為 <b>天然視黃醇替代成分</b>。</div>
+            <div class="text">其作用與 Retinol 類似，可改善細紋與膚色，同時較溫和，適合敏感肌或乾燥肌。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">潔面 → 化妝水 → 精華 → <b>Rejuchiol PDRN Perfect Cream</b></div>
+            <div class="text">取適量均勻塗抹於臉部。</div>
+            <div class="text">以手掌輕壓幫助吸收。</div>
+            <div class="text">細紋或痘疤部位可再薄擦一層加強護理。</div>
+            <div class="text">白天使用時請搭配防曬產品。</div>
+        </div>
+
+        <div class="lang-panel" data-lang="zh-Hans">
+            <div class="section-title">Rejuchiol PDRN Perfect Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">产品说明</div>
+            <div class="text"><b>Rejuchiol PDRN Perfect Cream</b> 含有 <b>1500 ppm PDRN</b> 与植物来源成分 <b>Bakuchiol</b>，是一款专注于皮肤修护与弹力护理的再生面霜。</div>
+            <div class="text">PDRN 来自鲑鱼 DNA，可帮助促进皮肤再生并修复受损的皮肤屏障。</div>
+            <div class="text">Bakuchiol 是一种植物性视黄醇替代成分，可帮助改善细纹与皮肤弹性，同时更加温和。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要功效</div>
+            <div class="text"><b>皮肤再生与屏障修护</b><br>高浓度 PDRN 有助于支持皮肤细胞更新并强化皮肤屏障。</div>
+            <div class="text"><b>弹力与细纹护理</b><br>Bakuchiol 有助于改善皮肤弹性与细纹问题。</div>
+            <div class="text"><b>舒缓与滋养护理</b><br>帮助舒缓敏感肌肤并提供养分。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要成分</div>
+            <div class="text"><b>PDRN (1500 ppm)</b><br>来源于鲑鱼 DNA，有助于修护受损皮肤并支持再生环境。</div>
+            <div class="text"><b>Bakuchiol</b><br>植物性视黄醇替代成分，可改善细纹与弹性，刺激性较低。</div>
+            <div class="text"><b>Triple Peptide Complex</b><br>帮助支撑皮肤结构并提升紧致感。</div>
+            <div class="text"><b>Ceramide NP & Centella Asiatica</b><br>帮助强化皮肤屏障并舒缓敏感肌肤。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">什么是 Bakuchiol？</div>
+            <div class="text">Bakuchiol 是植物来源成分，被认为是 <b>天然视黄醇替代成分</b>。</div>
+            <div class="text">它与 Retinol 作用相似，可帮助改善细纹与肤色，同时更加温和，适合敏感肌或干燥肌。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洁面 → 化妆水 → 精华 → <b>Rejuchiol PDRN Perfect Cream</b></div>
+            <div class="text">取适量均匀涂抹于面部。</div>
+            <div class="text">用手掌轻压帮助吸收。</div>
+            <div class="text">细纹或痘疤部位可再薄涂一层加强护理。</div>
+            <div class="text">白天使用时请搭配防晒产品。</div>
+        </div>
+
+        <div class="lang-panel" data-lang="ja">
+            <div class="section-title">Rejuchiol PDRN Perfect Cream</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">製品説明</div>
+            <div class="text"><b>Rejuchiol PDRN Perfect Cream</b> は <b>1500 ppm の PDRN</b> と植物由来成分 <b>バクチオール</b> を配合したスキンリペアクリームです。</div>
+            <div class="text">サーモン DNA 由来の PDRN が肌再生をサポートし、ダメージを受けた肌バリアの回復を助けます。</div>
+            <div class="text">バクチオールはレチノールに似たエイジングケア効果を持ちながら、刺激が比較的少ない成分として知られています。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主な効果</div>
+            <div class="text"><b>肌再生とバリアケア</b><br>高濃度 PDRN が肌細胞の再生をサポートし、肌バリアを整えます。</div>
+            <div class="text"><b>ハリと小じわケア</b><br>バクチオールが肌の弾力をサポートし、小じわケアに役立ちます。</div>
+            <div class="text"><b>鎮静と栄養ケア</b><br>敏感になった肌を落ち着かせ、うるおいと栄養を与えます。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主な成分</div>
+            <div class="text"><b>PDRN (1500 ppm)</b><br>サーモン DNA 由来成分で、ダメージを受けた肌の修復と再生環境をサポートします。</div>
+            <div class="text"><b>Bakuchiol</b><br>植物性レチノール代替成分で、小じわや弾力ケアに役立ち、刺激が比較的少ない成分です。</div>
+            <div class="text"><b>Triple Peptide Complex</b><br>肌構造を支え、ハリ感を高めるのに役立ちます。</div>
+            <div class="text"><b>Ceramide NP & Centella Asiatica</b><br>肌バリアを整え、敏感になった肌をやさしく鎮静します。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">バクチオールとは？</div>
+            <div class="text">バクチオールは植物由来成分で、<b>天然レチノール代替成分</b>として知られています。</div>
+            <div class="text">Retinol と似た働きで小じわや肌トーン改善をサポートしながら、より穏やかに使える成分です。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洗顔 → 化粧水 → 美容液 → <b>Rejuchiol PDRN Perfect Cream</b></div>
+            <div class="text">適量を顔全体に塗布してください。</div>
+            <div class="text">手のひらでやさしく押し込むようになじませます。</div>
+            <div class="text">小じわやニキビ跡が気になる部分には薄く重ね塗りしてください。</div>
+            <div class="text">朝に使用する場合は日焼け止めを併用してください。</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const basePriceKRW = 29000;
+let currentLang = "ko";
+let currentCurrency = "KRW";
+let exchangeRates = {};
+
+const languageMap = {
+    "ko": {
+        subtitle: "PDRN 퍼펙트 크림",
+        refresh: "새로고침",
+        loading: "환율 정보를 가져오는 중...",
+        updated: "실시간 환율 업데이트 완료",
+        failed: "환율 정보를 불러올 수 없습니다."
+    },
+    "en": {
+        subtitle: "PDRN Perfect Cream",
+        refresh: "Refresh",
+        loading: "Loading rates...",
+        updated: "Live exchange rate updated",
+        failed: "Could not load exchange rate."
+    },
+    "zh-Hant": {
+        subtitle: "PDRN 完美乳霜",
+        refresh: "重新整理",
+        loading: "匯率載入中...",
+        updated: "實時匯率更新完成",
+        failed: "無法載入匯率。"
+    },
+    "zh-Hans": {
+        subtitle: "PDRN 完美面霜",
+        refresh: "刷新",
+        loading: "汇率加载中...",
+        updated: "实时汇率更新完成",
+        failed: "无法加载汇率。"
+    },
+    "ja": {
+        subtitle: "PDRN パーフェクトクリーム",
+        refresh: "更新",
+        loading: "読み込み中...",
+        updated: "リアルタイムレート更新完了",
+        failed: "レート取得失敗"
+    }
+};
+
+const currencySymbols = {
+    "KRW": "₩",
+    "USD": "$",
+    "TWD": "$",
+    "CNY": "¥",
+    "JPY": "¥",
+    "EUR": "€"
+};
+
+async function loadExchangeRates() {
+    const status = document.getElementById("rateStatus");
+    const refreshBtn = document.getElementById("refreshBtn");
+
+    try {
+        refreshBtn.disabled = true;
+        status.innerText = languageMap[currentLang].loading;
+
+        const response = await fetch('https://open.er-api.com/v6/latest/KRW');
+        if (!response.ok) throw new Error();
+
+        const data = await response.json();
+        exchangeRates = data.rates;
+
+        status.innerText = `${languageMap[currentLang].updated}`;
+        updatePriceDisplay();
+    } catch (e) {
+        status.innerText = languageMap[currentLang].failed;
+    } finally {
+        refreshBtn.disabled = false;
+    }
+}
+
+function updatePriceDisplay() {
+    const mainPrice = document.getElementById("mainPrice");
+    const subPrice = document.getElementById("subPrice");
+
+    if (currentCurrency === "KRW") {
+        mainPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+        subPrice.innerText = "";
+        return;
+    }
+
+    if (exchangeRates[currentCurrency]) {
+        const rate = exchangeRates[currentCurrency];
+        const decimalPoint = (currentCurrency === 'USD' || currentCurrency === 'EUR') ? 2 : 0;
+        const converted = (basePriceKRW * rate).toFixed(decimalPoint);
+
+        mainPrice.innerText = `${currentCurrency} ${currencySymbols[currentCurrency]}${Number(converted).toLocaleString(undefined, {minimumFractionDigits: decimalPoint})}`;
+        subPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+    }
+}
+
+function changeCurrency(curr) {
+    currentCurrency = curr;
+    document.querySelectorAll(".curr-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.getAttribute('data-curr') === curr);
+    });
+    updatePriceDisplay();
+}
+
+function switchLanguage(lang){
+    currentLang = lang;
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+
+    document.querySelectorAll(".lang-panel").forEach(panel => {
+        panel.classList.toggle("active", panel.dataset.lang === lang);
+    });
+
+    document.getElementById("subtitle").innerText = languageMap[lang].subtitle;
+    document.getElementById("refreshBtn").innerText = languageMap[lang].refresh;
+
+    const status = document.getElementById("rateStatus");
+    if(
+        status.innerText.includes("완료") ||
+        status.innerText.includes("updated") ||
+        status.innerText.includes("更新") ||
+        status.innerText.includes("完了")
+    ){
+        status.innerText = languageMap[lang].updated;
+    }
+}
+
+switchLanguage("ko");
+loadExchangeRates();
+</script>
+</body>
+</html>
