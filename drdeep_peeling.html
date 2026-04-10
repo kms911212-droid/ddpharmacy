@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr.Deep Mineral Peeling Glow Shot</title>
+<style>
+    *{ box-sizing:border-box; }
+
+    body{
+        margin:0;
+        background:#efefef;
+        color:#111;
+        font-family: "PingFang TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    img{
+        max-width:100%;
+        height:auto;
+    }
+
+    .container{ max-width:900px; margin:auto; }
+    .product-image{ width:100%; }
+    .product-image img{ width:100%; display:block; }
+
+    .content{ padding:80px 60px; }
+
+    .title{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:72px;
+        font-weight:300;
+        letter-spacing:-2px;
+        line-height:0.95;
+    }
+
+    .subtitle{
+        font-family:"Didot","Bodoni 72","Times New Roman",serif;
+        font-size:42px;
+        margin-bottom:18px;
+        font-weight:300;
+        line-height:1.25;
+    }
+
+    .lang-switch{
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        gap:8px;
+        flex-wrap:wrap;
+        margin-bottom:32px;
+    }
+
+    .lang-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        color:#666;
+        font-size:12px;
+        letter-spacing:0.1em;
+        text-transform:uppercase;
+        cursor:pointer;
+        padding:6px 12px;
+        transition:all 0.25s ease;
+    }
+
+    .lang-btn:hover{
+        border-color:#111;
+        color:#111;
+    }
+
+    .lang-btn.active{
+        background:#111;
+        color:#fff;
+        border-color:#111;
+        font-weight:500;
+    }
+
+    .currency-section{
+        margin-bottom:60px;
+        text-align:right;
+    }
+
+    .currency-tabs{
+        display:flex;
+        justify-content:flex-end;
+        gap:12px;
+        margin-bottom:12px;
+        flex-wrap:wrap;
+    }
+
+    .curr-tab{
+        border:none;
+        background:none;
+        font-size:13px;
+        color:#999;
+        cursor:pointer;
+        padding:0;
+        letter-spacing:0.05em;
+        transition:color 0.2s;
+        position:relative;
+    }
+
+    .curr-tab.active{
+        color:#111;
+        font-weight:600;
+    }
+
+    .curr-tab.active::after{
+        content:"";
+        display:block;
+        width:100%;
+        height:1px;
+        background:#111;
+        margin-top:2px;
+    }
+
+    .price-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:baseline;
+        gap:12px;
+    }
+
+    .price-main{
+        font-size:38px;
+        font-weight:500;
+        letter-spacing:-0.5px;
+    }
+
+    .price-sub{
+        font-size:18px;
+        color:#888;
+        text-decoration: line-through;
+    }
+
+    .status-row{
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        gap:10px;
+        margin-top:8px;
+    }
+
+    .status{
+        font-size:12px;
+        color:#aaa;
+    }
+
+    .currency-btn{
+        border:1px solid #d7d7d7;
+        background:transparent;
+        padding:4px 10px;
+        cursor:pointer;
+        font-size:11px;
+        text-transform:uppercase;
+    }
+
+    .lang-panel{ display:none; }
+    .lang-panel.active{ display:block; }
+
+    .text{
+        font-size:26px;
+        line-height:1.9;
+        margin-bottom:34px;
+        font-weight:300;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+        max-width:640px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:left;
+    }
+
+    .section-title{
+        font-size:30px;
+        font-weight:700;
+        line-height:1.4;
+        margin:56px 0 18px 0;
+        letter-spacing:-0.01em;
+        word-break:break-word;
+        overflow-wrap:anywhere;
+        max-width:640px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:left;
+    }
+
+    @media (max-width:768px){
+        .container{ max-width:100%; }
+        .content{ padding:36px 20px; }
+
+        .title{
+            font-size:42px;
+            letter-spacing:-1px;
+            word-break:break-word;
+        }
+
+        .subtitle{
+            font-size:24px;
+            line-height:1.3;
+            margin-bottom:16px;
+        }
+
+        .lang-switch{
+            gap:6px;
+            margin-bottom:24px;
+        }
+
+        .lang-btn{
+            font-size:11px;
+            padding:6px 10px;
+        }
+
+        .currency-tabs{
+            gap:10px;
+            row-gap:6px;
+        }
+
+        .price-row{
+            flex-direction:column;
+            align-items:flex-end;
+            gap:4px;
+        }
+
+        .price-main{
+            font-size:26px;
+            text-align:right;
+        }
+
+        .price-sub{ font-size:13px; }
+
+        .status-row{
+            flex-wrap:wrap;
+            justify-content:flex-end;
+            gap:8px;
+        }
+
+        .status{
+            font-size:11px;
+            text-align:right;
+        }
+
+        .currency-btn{
+            font-size:10px;
+            padding:4px 8px;
+        }
+
+        .text{
+            font-size:17px;
+            line-height:1.8;
+            margin-bottom:22px;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+            max-width:640px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:left;
+        }
+
+        .section-title{
+            font-size:21px;
+            margin:34px 0 12px 0;
+            line-height:1.35;
+            word-break:break-word;
+            overflow-wrap:anywhere;
+            max-width:640px;
+            margin-left:auto;
+            margin-right:auto;
+            text-align:left;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="product-image">
+        <img src="drdeep_peeling.png" alt="Dr.Deep Mineral Peeling Glow Shot">
+    </div>
+
+    <div class="content">
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="ko" onclick="switchLanguage('ko')">KR</button>
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="zh-Hant" onclick="switchLanguage('zh-Hant')">繁中</button>
+            <button class="lang-btn" data-lang="zh-Hans" onclick="switchLanguage('zh-Hans')">简中</button>
+            <button class="lang-btn" data-lang="ja" onclick="switchLanguage('ja')">日本語</button>
+        </div>
+
+        <div class="title">Dr.Deep</div>
+        <div class="subtitle" id="subtitle">Mineral Peeling Glow Shot</div>
+
+        <div class="currency-section">
+            <div class="currency-tabs">
+                <button class="curr-tab active" data-curr="KRW" onclick="changeCurrency('KRW')">KRW</button>
+                <button class="curr-tab" data-curr="USD" onclick="changeCurrency('USD')">USD</button>
+                <button class="curr-tab" data-curr="TWD" onclick="changeCurrency('TWD')">TWD</button>
+                <button class="curr-tab" data-curr="CNY" onclick="changeCurrency('CNY')">CNY</button>
+                <button class="curr-tab" data-curr="JPY" onclick="changeCurrency('JPY')">JPY</button>
+                <button class="curr-tab" data-curr="EUR" onclick="changeCurrency('EUR')">EUR</button>
+            </div>
+            <div class="price-row">
+                <div class="price-sub" id="subPrice"></div>
+                <div class="price-main" id="mainPrice">₩43,000</div>
+            </div>
+            <div class="status-row">
+                <div class="status" id="rateStatus">Loading rates...</div>
+                <button class="currency-btn" id="refreshBtn" onclick="loadExchangeRates()">Refresh</button>
+            </div>
+        </div>
+
+        <div class="lang-panel active" data-lang="ko">
+            <div class="section-title">Dr.Deep Mineral Peeling Glow Shot</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">│ 제품 설명</div>
+            <div class="text"><b>Dr.Deep Mineral Peeling Glow Shot</b>은 미네랄 PDRN과 락토 엑소좀을 기반으로 한 <b>차세대 필링 부스터 크림</b>으로, 들뜬 각질과 모공, 블랙헤드 고민을 동시에 케어하여 매끈한 피부결과 자연스러운 물광 피부를 완성하는 스킨케어 제품입니다.</div>
+            <div class="text">피부 표면의 불필요한 각질을 부드럽게 정리하고 피부 턴오버를 촉진하여 <b>화장이 잘 먹는 매끈한 피부 상태</b>를 만드는 데 도움을 줍니다.</div>
+            <div class="text">락토 PDRN, 락토 엑소좀, 하이퍼 미네랄 성분, AHA · PHA · LHA 복합 성분을 배합하여 피부결과 모공 케어, 진정 케어를 동시에 고려한 포뮬러입니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 제형</div>
+            <div class="text">끈적임 없이 산뜻하게 흡수되는 <b>가벼운 겔 크림 제형</b>입니다.</div>
+            <div class="text">메이크업 전에도 부담 없이 사용할 수 있으며, 피부 표면은 산뜻하게 정리하면서도 피부 속은 촉촉하게 채워주는 사용감을 제공합니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 권장 사용 부위</div>
+            <div class="text">• 들뜬 각질이 고민되는 부위<br>• 모공 및 블랙헤드 관리가 필요한 부위<br>• 피부결이 거칠어 보이는 부위</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 주요 특징</div>
+            <div class="text"><b>Lacto PDRN (Sodium DNA)</b><br>프로바이오틱스 유래 성분과 결합된 PDRN이 맑고 투명한 피부 컨디션을 완성하는 데 도움을 줍니다.</div>
+            <div class="text"><b>Lacto Exosome (Lactobacillus Ferment)</b><br>피부 깊숙이 영양을 전달하여 피부 컨디션을 개선하고 건강한 피부 환경을 유지합니다.</div>
+            <div class="text"><b>Hyper Mineral Complex</b><br>고농축 미네랄 성분이 피부 회복을 돕고 피부 장벽 강화 및 진정 케어에 도움을 줍니다.</div>
+            <div class="text"><b>AHA · PHA · LHA Complex</b><br>부드럽게 각질을 제거하고 피부 턴오버를 촉진하여 매끈한 피부결을 완성합니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 사용 방법</div>
+            <div class="text">세안 후 아침과 저녁, 기초 스킨케어 제품 사용 후 원하는 부위에 <b>넓게 펴 발라 주세요.</b></div>
+            <div class="text">피부 상태에 따라 <b>하루 3~4회까지 덧발라 사용</b>할 수 있습니다.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">│ 사용 기간 안내</div>
+            <div class="text">피부 상태에 따라 차이가 있을 수 있으나, 일반적으로 <b>7일~14일 정도 꾸준히 사용 시</b> 피부결 개선 효과를 기대할 수 있습니다.</div>
+        </div>
+
+        <div class="lang-panel" data-lang="en">
+            <div class="section-title">Dr.Deep Mineral Peeling Glow Shot</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">Product Description</div>
+            <div class="text"><b>Dr.Deep Mineral Peeling Glow Shot</b> is a <b>next-generation peeling booster cream</b> formulated with Mineral PDRN and Lactobacillus-derived exosomes.</div>
+            <div class="text">It helps remove excess dead skin cells, refine pores, and improve skin texture for a smooth, radiant <b>“glass skin” appearance</b>.</div>
+            <div class="text">The formula gently promotes skin turnover, helping create a smoother surface that allows makeup to adhere more evenly.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Texture</div>
+            <div class="text">Lightweight <b>non-sticky gel cream texture</b> that absorbs quickly into the skin.</div>
+            <div class="text">Leaves the skin feeling fresh and smooth while maintaining comfortable hydration underneath.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Recommended Areas</div>
+            <div class="text">• Rough or flaky skin areas<br>• Pores and blackhead-prone areas<br>• Uneven skin texture</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Key Features</div>
+            <div class="text"><b>Lacto PDRN (Sodium DNA)</b><br>Helps support clearer and healthier-looking skin.</div>
+            <div class="text"><b>Lacto Exosome (Lactobacillus Ferment)</b><br>Delivers nutrients deep into the skin to improve overall skin condition.</div>
+            <div class="text"><b>Hyper Mineral Complex</b><br>Helps strengthen the skin barrier and supports skin recovery.</div>
+            <div class="text"><b>AHA · PHA · LHA Complex</b><br>Gently exfoliates dead skin cells and promotes smoother skin texture.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">How to Use</div>
+            <div class="text">After cleansing and applying basic skincare, spread an appropriate amount over the desired area.</div>
+            <div class="text">Depending on skin condition, it can be reapplied <b>up to 3–4 times daily</b>.</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">Recommended Usage Period</div>
+            <div class="text">Results may vary depending on skin condition, but noticeable improvements are typically observed after <b>7–14 days of consistent use</b>.</div>
+        </div>
+
+        <div class="lang-panel" data-lang="zh-Hant">
+            <div class="section-title">Dr.Deep Mineral Peeling Glow Shot</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">產品說明</div>
+            <div class="text"><b>Dr.Deep Mineral Peeling Glow Shot</b> 是一款以 Mineral PDRN 與乳酸菌外泌體為核心成分的 <b>新一代去角質護膚霜</b>。</div>
+            <div class="text">幫助去除老廢角質、改善毛孔與黑頭問題，打造光滑細緻、透亮水光肌。</div>
+            <div class="text">溫和促進肌膚更新循環，使妝容更服貼、肌膚表面更加平滑。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">質地</div>
+            <div class="text">清爽不黏膩的 <b>輕盈凝膠乳霜質地</b>。</div>
+            <div class="text">表面清爽、內層保濕，適合妝前或日常護理使用。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">建議使用部位</div>
+            <div class="text">• 角質堆積部位<br>• 毛孔與黑頭明顯部位<br>• 膚質粗糙部位</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要特點</div>
+            <div class="text"><b>Lacto PDRN (Sodium DNA)</b><br>幫助維持健康透亮的肌膚狀態。</div>
+            <div class="text"><b>Lacto Exosome</b><br>為肌膚深層提供營養。</div>
+            <div class="text"><b>高濃度礦物複合物</b><br>幫助修護肌膚屏障並舒緩肌膚。</div>
+            <div class="text"><b>AHA · PHA · LHA 複合成分</b><br>溫和去除老廢角質並改善膚質。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洗臉後於早晚基礎保養後，取適量均勻塗抹於需要護理的部位。</div>
+            <div class="text">依肌膚狀況可 <b>每日重複使用 3–4 次</b>。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">建議使用期間</div>
+            <div class="text">依肌膚狀況不同有所差異，但一般持續使用 <b>7–14 天</b> 可期待膚質改善效果。</div>
+        </div>
+
+        <div class="lang-panel" data-lang="zh-Hans">
+            <div class="section-title">Dr.Deep Mineral Peeling Glow Shot</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">产品说明</div>
+            <div class="text"><b>Dr.Deep Mineral Peeling Glow Shot</b> 是一款采用 Mineral PDRN 与乳酸菌外泌体配方的 <b>新一代焕肤护理霜</b>。</div>
+            <div class="text">帮助清理老废角质、改善毛孔和黑头问题，打造光滑细腻的水光肌肤。</div>
+            <div class="text">温和促进皮肤更新循环，使妆容更服帖、肤表更平滑。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">质地</div>
+            <div class="text">清爽不粘腻的 <b>轻盈凝胶乳霜质地</b>。</div>
+            <div class="text">表面清爽，内层保湿，适合妆前或日常护理使用。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">建议使用部位</div>
+            <div class="text">• 角质堆积部位<br>• 毛孔与黑头明显部位<br>• 肤质粗糙部位</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主要特点</div>
+            <div class="text"><b>Lacto PDRN (Sodium DNA)</b><br>帮助维持健康透亮的肌肤状态。</div>
+            <div class="text"><b>Lacto Exosome</b><br>为肌肤深层补充营养。</div>
+            <div class="text"><b>高浓度矿物复合物</b><br>帮助修护皮肤屏障并舒缓肌肤。</div>
+            <div class="text"><b>AHA · PHA · LHA 复合成分</b><br>温和去除老废角质并改善肤质。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洁面后，于早晚基础护肤后取适量均匀涂抹于需要护理的部位。</div>
+            <div class="text">根据肌肤状态可 <b>每日重复使用 3–4 次</b>。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">建议使用期间</div>
+            <div class="text">根据肤况不同会有所差异，但一般持续使用 <b>7–14 天</b> 可期待肤质改善效果。</div>
+        </div>
+
+        <div class="lang-panel" data-lang="ja">
+            <div class="section-title">Dr.Deep Mineral Peeling Glow Shot</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:40px auto;max-width:640px;">
+            <div class="section-title">製品説明</div>
+            <div class="text"><b>Dr.Deep Mineral Peeling Glow Shot</b> は、ミネラル PDRN と乳酸菌エクソソームを配合した <b>次世代ピーリングブースタークリーム</b> です。</div>
+            <div class="text">古い角質をやさしく整え、毛穴やブラックヘッドをケアし、なめらかでツヤのある肌へ導きます。</div>
+            <div class="text">肌のターンオーバーをやさしくサポートし、メイクのりのよいなめらかな肌状態へ整えます。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">テクスチャー</div>
+            <div class="text">べたつきにくい <b>軽やかなジェルクリームテクスチャー</b> です。</div>
+            <div class="text">表面はさっぱり、内側はしっとりとした使い心地で、メイク前にも使いやすい設計です。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">おすすめの使用部位</div>
+            <div class="text">• 角質が気になる部分<br>• 毛穴やブラックヘッドが目立つ部分<br>• 肌のキメが乱れて見える部分</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">主な特徴</div>
+            <div class="text"><b>Lacto PDRN (Sodium DNA)</b><br>透明感のある健やかな肌状態をサポートします。</div>
+            <div class="text"><b>Lacto Exosome</b><br>肌の奥までうるおいと栄養を届けます。</div>
+            <div class="text"><b>高濃度ミネラルコンプレックス</b><br>肌バリアを整え、敏感な肌を穏やかにケアします。</div>
+            <div class="text"><b>AHA · PHA · LHA 複合成分</b><br>古い角質をやさしく取り除き、なめらかな肌へ導きます。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用方法</div>
+            <div class="text">洗顔後、朝晩の基礎スキンケア後に適量を気になる部分へ広げてください。</div>
+            <div class="text">肌状態に応じて <b>1日3〜4回まで重ね塗り</b> が可能です。</div>
+            <hr style="border:none;border-top:1px solid #e2e2e2;margin:50px auto;max-width:640px;">
+            <div class="section-title">使用目安期間</div>
+            <div class="text">肌状態によって個人差はありますが、一般的に <b>7〜14日ほど継続使用</b> することで、肌キメ改善が期待できます。</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const basePriceKRW = 43000;
+let currentLang = "ko";
+let currentCurrency = "KRW";
+let exchangeRates = {};
+
+const languageMap = {
+    "ko": {
+        subtitle: "미네랄 필링 글로우샷",
+        refresh: "새로고침",
+        loading: "환율 정보를 가져오는 중...",
+        updated: "실시간 환율 업데이트 완료",
+        failed: "환율 정보를 불러올 수 없습니다."
+    },
+    "en": {
+        subtitle: "Mineral Peeling Glow Shot",
+        refresh: "Refresh",
+        loading: "Loading rates...",
+        updated: "Live exchange rate updated",
+        failed: "Could not load exchange rate."
+    },
+    "zh-Hant": {
+        subtitle: "礦物去角質亮膚霜",
+        refresh: "重新整理",
+        loading: "匯率載入中...",
+        updated: "實時匯率更新完成",
+        failed: "無法載入匯率。"
+    },
+    "zh-Hans": {
+        subtitle: "矿物焕肤亮肤霜",
+        refresh: "刷新",
+        loading: "汇率加载中...",
+        updated: "实时汇率更新完成",
+        failed: "无法加载汇率。"
+    },
+    "ja": {
+        subtitle: "ミネラル ピーリング グロウショット",
+        refresh: "更新",
+        loading: "読み込み中...",
+        updated: "リアルタイムレート更新完了",
+        failed: "レート取得失敗"
+    }
+};
+
+const currencySymbols = {
+    "KRW": "₩",
+    "USD": "$",
+    "TWD": "$",
+    "CNY": "¥",
+    "JPY": "¥",
+    "EUR": "€"
+};
+
+async function loadExchangeRates() {
+    const status = document.getElementById("rateStatus");
+    const refreshBtn = document.getElementById("refreshBtn");
+
+    try {
+        refreshBtn.disabled = true;
+        status.innerText = languageMap[currentLang].loading;
+
+        const response = await fetch('https://open.er-api.com/v6/latest/KRW');
+        if (!response.ok) throw new Error();
+
+        const data = await response.json();
+        exchangeRates = data.rates;
+
+        status.innerText = `${languageMap[currentLang].updated}`;
+        updatePriceDisplay();
+    } catch (e) {
+        status.innerText = languageMap[currentLang].failed;
+    } finally {
+        refreshBtn.disabled = false;
+    }
+}
+
+function updatePriceDisplay() {
+    const mainPrice = document.getElementById("mainPrice");
+    const subPrice = document.getElementById("subPrice");
+
+    if (currentCurrency === "KRW") {
+        mainPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+        subPrice.innerText = "";
+        return;
+    }
+
+    if (exchangeRates[currentCurrency]) {
+        const rate = exchangeRates[currentCurrency];
+        const decimalPoint = (currentCurrency === 'USD' || currentCurrency === 'EUR') ? 2 : 0;
+        const converted = (basePriceKRW * rate).toFixed(decimalPoint);
+
+        mainPrice.innerText = `${currentCurrency} ${currencySymbols[currentCurrency]}${Number(converted).toLocaleString(undefined, {minimumFractionDigits: decimalPoint})}`;
+        subPrice.innerText = `₩${basePriceKRW.toLocaleString()}`;
+    }
+}
+
+function changeCurrency(curr) {
+    currentCurrency = curr;
+    document.querySelectorAll(".curr-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.getAttribute('data-curr') === curr);
+    });
+    updatePriceDisplay();
+}
+
+function switchLanguage(lang){
+    currentLang = lang;
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+
+    document.querySelectorAll(".lang-panel").forEach(panel => {
+        panel.classList.toggle("active", panel.dataset.lang === lang);
+    });
+
+    document.getElementById("subtitle").innerText = languageMap[lang].subtitle;
+    document.getElementById("refreshBtn").innerText = languageMap[lang].refresh;
+
+    const status = document.getElementById("rateStatus");
+    if(
+        status.innerText.includes("완료") ||
+        status.innerText.includes("updated") ||
+        status.innerText.includes("更新") ||
+        status.innerText.includes("完了")
+    ){
+        status.innerText = languageMap[lang].updated;
+    }
+}
+
+switchLanguage("ko");
+loadExchangeRates();
+</script>
+</body>
+</html>
